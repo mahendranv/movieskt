@@ -5,5 +5,9 @@ data class MovieDetails(
     val title: String,
     val rating: Double,
     val summary: String,
+
+    val covers: List<String>,
+    val images: List<String>,
+
     val related: List<MovieLite>
 )

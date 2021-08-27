@@ -41,6 +41,9 @@ android {
 
 apollo {
     generateKotlinModels.set(true)
+    customTypeMapping = [
+            "URL": "kotlin.String"
+    ]
 }
 
 dependencies {

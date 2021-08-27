@@ -10,7 +10,7 @@ fun GMovieLite.toDomainModel(): MovieLite {
         id = node?.id ?: "",
         title = node?.title ?: "",
         rating = node?.rating ?: 0.0,
-        imageUrl = node?.images?.posters?.firstOrNull()?.image?.toString()
+        imageUrl = node?.images?.posters?.firstOrNull()?.image
     )
 }
 
@@ -20,6 +20,8 @@ fun MovieDetailsQuery.AsMovie.toDomainModel(): MovieDetails {
         title = title,
         summary = overview,
         rating = rating,
+        covers = images.backdrops.map { it.image },
+        images = images.posters.map { it.image },
         related = similar.edges?.filterNotNull()?.map { it.fragments.gMovieLite.toDomainModel() }
             ?: emptyList()
     )
