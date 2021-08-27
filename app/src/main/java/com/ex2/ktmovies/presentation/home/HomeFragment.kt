@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ex2.ktmovies.databinding.FragmentHomeBinding
 import com.ex2.ktmovies.platform.DisplayHelper
@@ -44,8 +45,12 @@ class HomeFragment : Fragment() {
             )
         )
         binding.homeRv.adapter = adapter
-        adapter.setOnItemClickListener {
-
+        adapter.setOnItemClickListener { movie ->
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                    movie.id
+                )
+            )
         }
         observeFlow()
 
