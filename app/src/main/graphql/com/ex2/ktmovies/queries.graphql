@@ -1,0 +1,24 @@
+query NowPlaying {
+    movies {
+        nowPlaying {
+            edges {
+                ... GMovieLite
+            }
+        }
+    }
+}
+
+# Movie Lite is the thumbnail in home screen
+# or related movies section
+fragment GMovieLite on MovieEdge {
+    node {
+        id
+        title
+        rating
+        images {
+            posters {
+                image(size: W780)
+            }
+        }
+    }
+}
