@@ -10,20 +10,38 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="H,3:4"
+        app:layout_constraintDimensionRatio="H,8:11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
     <TextView
+        android:id="@+id/ratingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xsmall"
+        android:layout_marginEnd="@dimen/margin_xsmall"
+        android:background="@drawable/shape_rating_inlined"
+        android:drawablePadding="@dimen/margin_xsmall"
+        android:gravity="center_vertical"
+        android:padding="@dimen/margin_xsmall"
+        android:textAppearance="@style/textAppearanceRating"
+        app:drawableStartCompat="@drawable/ic_rating_star"
+        app:layout_constraintEnd_toEndOf="@id/movieThumb"
+        app:layout_constraintTop_toTopOf="@id/movieThumb"
+        tools:text="4.5" />
+
+    <TextView
         android:id="@+id/titleLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xsmall"
+        android:layout_marginTop="@dimen/margin_xsmall"
         android:ellipsize="end"
         android:maxLines="1"
+        android:textAppearance="@style/AppText.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movieThumb"
         tools:text="Batman" />

@@ -58,6 +58,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieViewHolder>() {
                     url = item.imageUrl,
                     cornerRadius = DisplayHelper.DP_8
                 )
+                ratingLabel.text = item.rating.toString()
             }
         }
     }

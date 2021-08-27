@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="textAppearanceRating">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?colorOnPrimarySurface</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <style name="AppText.Body2">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>
