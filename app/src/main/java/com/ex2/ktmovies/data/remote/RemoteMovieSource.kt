@@ -1,6 +1,7 @@
 package com.ex2.ktmovies.data.remote
 
 import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.cache.http.HttpCachePolicy
 import com.apollographql.apollo.coroutines.await
 import com.ex2.ktmovies.MovieDetailsQuery
 import com.ex2.ktmovies.NowPlayingQuery
@@ -36,7 +37,11 @@ class RemoteMovieSource @Inject constructor(
     }
 
     override suspend fun fetchMovieDetails(id: String): Either<Failure, MovieDetails> {
-        val response = apolloClient.query(MovieDetailsQuery(id)).await()
+        val response = apolloClient.query(MovieDetailsQuery(id))
+            .toBuilder()
+            .httpCachePolicy(HttpCachePolicy.CACHE_FIRST)
+            .build()
+            .await()
         val data = response.data?.node?.asMovie
         return if (response.hasErrors() || data == null) {
             Either.Left(Failure.UNKNOWN)
