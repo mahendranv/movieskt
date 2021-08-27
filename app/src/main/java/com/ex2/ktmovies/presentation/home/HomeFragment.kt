@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.ex2.ktmovies.databinding.FragmentHomeBinding
+import com.ex2.ktmovies.platform.DisplayHelper
+import com.ex2.ktmovies.platform.GridSpacingItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -32,6 +35,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // UI
+        binding.homeRv.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
+        binding.homeRv.addItemDecoration(
+            GridSpacingItemDecoration(
+                spanCount = SPAN_COUNT,
+                spacing = DisplayHelper.DP_16,
+                includeEdge = true
+            )
+        )
         binding.homeRv.adapter = adapter
         adapter.setOnItemClickListener {
 
@@ -47,5 +58,9 @@ class HomeFragment : Fragment() {
             adapter.setItems(movies)
             adapter.notifyDataSetChanged()
         }
+    }
+
+    companion object {
+        const val SPAN_COUNT = 2
     }
 }

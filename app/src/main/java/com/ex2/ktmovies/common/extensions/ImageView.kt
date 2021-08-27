@@ -3,6 +3,7 @@ package com.ex2.ktmovies.common.extensions
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.ex2.ktmovies.R
 
 /**
@@ -12,6 +13,7 @@ fun ImageView.loadImage(
     url: String?,
     @DrawableRes placeHolder: Int = R.drawable.ic_movie_placeholder,
     @DrawableRes fallback: Int = R.drawable.ic_movie_placeholder,
+    cornerRadius: Int = 0
 ) {
     if (url.isNullOrBlank()) {
         load(fallback)
@@ -20,6 +22,9 @@ fun ImageView.loadImage(
             crossfade(true)
             fallback(fallback)
             placeholder(placeHolder)
+            if (cornerRadius > 0) {
+                transformations(RoundedCornersTransformation(cornerRadius.toFloat()))
+            }
         }
     }
 }
