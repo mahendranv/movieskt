@@ -4,9 +4,12 @@ import android.util.Log
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.CustomTypeAdapter
 import com.apollographql.apollo.api.CustomTypeValue
+import com.apollographql.apollo.cache.http.ApolloHttpCache
+import com.apollographql.apollo.cache.http.DiskLruHttpCacheStore
 import com.ex2.ktmovies.type.CustomType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import java.io.File
 
 object MovieApiClient {
 
@@ -29,11 +32,21 @@ object MovieApiClient {
             CustomTypeValue.GraphQLString(value)
     }
 
-    val apolloClient: ApolloClient =
-        ApolloClient.builder()
+    fun createApolloClient(cacheDirectory: File): ApolloClient {
+        // Apollo cache - http
+        // Directory where cached responses will be stored
+        val file = File(cacheDirectory, "apolloCache")
+
+        // Size in bytes of the cache
+        val size: Long = 1024 * 1024
+
+        // Create the http response cache store
+        val cacheStore = DiskLruHttpCacheStore(file, size)
+        return ApolloClient.builder()
             .serverUrl(graphUrl)
+            .httpCache(ApolloHttpCache(cacheStore))
             .okHttpClient(okHttp)
             .addCustomTypeAdapter(CustomType.URL, urlTypeAdapter)
             .build()
-
+    }
 }
