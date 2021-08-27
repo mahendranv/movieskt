@@ -2,11 +2,13 @@ package com.ex2.ktmovies.data.remote
 
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.coroutines.await
+import com.ex2.ktmovies.MovieDetailsQuery
 import com.ex2.ktmovies.NowPlayingQuery
 import com.ex2.ktmovies.common.Either
 import com.ex2.ktmovies.common.Failure
 import com.ex2.ktmovies.data.remote.mapper.toDomainModel
 import com.ex2.ktmovies.data.source.MovieService
+import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieListType
 import com.ex2.ktmovies.domain.model.MovieLite
 import javax.inject.Inject
@@ -30,6 +32,16 @@ class RemoteMovieSource @Inject constructor(
             }
             MovieListType.TRENDING -> Either.Left(Failure.UNKNOWN)
             MovieListType.TOP_RATED -> Either.Left(Failure.UNKNOWN)
+        }
+    }
+
+    override suspend fun fetchMovieDetails(id: String): Either<Failure, MovieDetails> {
+        val response = apolloClient.query(MovieDetailsQuery(id)).await()
+        val data = response.data?.node?.asMovie
+        return if (response.hasErrors() || data == null) {
+            Either.Left(Failure.UNKNOWN)
+        } else {
+            Either.Right(data.toDomainModel())
         }
     }
 }
