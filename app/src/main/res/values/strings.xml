@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KtMovies</string>
+    <string name="related_movies">Related movies</string>
 </resources>

@@ -22,6 +22,9 @@
             android:name="movieId"
             app:argType="string"
             app:nullable="false" />
+        <action
+            android:id="@+id/action_detailsFragment_self"
+            app:destination="@id/detailsFragment" />
     </fragment>
 
 </navigation>

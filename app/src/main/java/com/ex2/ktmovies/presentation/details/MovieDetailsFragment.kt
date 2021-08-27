@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.loadImage
+import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.databinding.FragmentMovieDetailsBinding
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.google.android.material.snackbar.Snackbar
@@ -26,6 +28,8 @@ class MovieDetailsFragment : Fragment() {
 
     private val viewModel by viewModels<MovieDetailsViewModel>()
 
+    private val adapter by lazy { RelatedMoviesAdapter() }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,11 +43,20 @@ class MovieDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetchMovieDetails(args.movieId)
 
+        binding.relatedRv.adapter = adapter
+        adapter.setOnItemClickListener {
+            findNavController().navigate(
+                MovieDetailsFragmentDirections.actionDetailsFragmentSelf(it.id)
+            )
+        }
         observeToFlow()
     }
 
     private fun observeToFlow() = lifecycleScope.launchWhenStarted {
         viewModel.pageState.collect {
+
+            binding.relatedMoviesTitle.showIf(it is MovieDetailsViewModel.PageState.Loaded)
+
             when (it) {
                 is MovieDetailsViewModel.PageState.Error -> Snackbar.make(
                     binding.root,
@@ -58,10 +71,13 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
-    private fun setMovieDetails(details: MovieDetails) {
-        binding.coverImage.loadImage(
+    private fun setMovieDetails(details: MovieDetails) = with(binding) {
+        topPanel.coverImage.loadImage(
             url = details.covers.firstOrNull(),
             fallback = R.drawable.ic_launcher_background
         )
+        titleLabel.text = details.title
+        summaryLabel.text = details.summary
+        adapter.setItems(details.related)
     }
 }
