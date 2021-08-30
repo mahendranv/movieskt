@@ -17,10 +17,16 @@ object MovieApiClient {
 
     private const val TAG = "MovieApiClient"
 
+    private val loggingInterceptor = run {
+        HttpLoggingInterceptor {
+            Log.d(TAG, it)
+        }.apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+    }
+
     private val okHttp = OkHttpClient.Builder()
-        .addInterceptor(HttpLoggingInterceptor {
-            Log.i(TAG, it)
-        })
+        .addInterceptor(loggingInterceptor)
         .build()
 
     // Type adapters

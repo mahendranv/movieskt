@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -36,6 +37,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
 
         // UI
         binding.homeRv.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
