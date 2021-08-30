@@ -15,11 +15,17 @@ fun GMovieLite.toDomainModel(): MovieLite {
 }
 
 fun MovieDetailsQuery.AsMovie.toDomainModel(): MovieDetails {
+    val genre = genres.take(2).joinToString(", ") { it.name }
     return MovieDetails(
         id = id,
         title = title,
         summary = overview,
         rating = rating,
+
+        genre = genre,
+        runTime = runtime,
+        releaseDate = releaseDate,
+
         covers = images.backdrops.map { it.image },
         images = images.posters.map { it.image },
         related = similar.edges?.filterNotNull()?.map { it.fragments.gMovieLite.toDomainModel() }

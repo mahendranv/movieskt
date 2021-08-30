@@ -104,9 +104,10 @@ class MovieDetailsFragment : Fragment() {
 //            fallback = R.drawable.ic_launcher_background
 //        )
         repaintContent(details.covers.firstOrNull())
-        titleLabel.text = details.title
+        topPanel.titleLabel.text = details.title
         summaryLabel.text = details.summary
         adapter.setItems(details.related)
+        topPanel.metaLabel.text = details.prepareMeta()
     }
 
     /**

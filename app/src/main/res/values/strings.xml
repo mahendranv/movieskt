@@ -5,6 +5,6 @@
     <string name="transition_target_movie_details">tx_target_movie_details</string>
 
     <string name="app_name">KtMovies</string>
-    <string name="related_movies">Related movies</string>
+    <string name="similar_movies">Similar movies</string>
     <string name="add_to_favorite">Add to favorite</string>
 </resources>

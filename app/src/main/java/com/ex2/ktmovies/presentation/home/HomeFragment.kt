@@ -67,7 +67,6 @@ class HomeFragment : Fragment() {
         }
         observeFlow()
 
-
         // API call
         viewModel.fetchNowPlaying()
     }

@@ -14,5 +14,10 @@
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">false</item>
         <item name="colorRating">@color/rating</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:navigationBarColor">?colorSurface</item>
+        <item name="android:fontFamily">@font/signika</item>
+
     </style>
 </resources>

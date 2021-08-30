@@ -13,17 +13,7 @@
         <include
             android:id="@+id/topPanel"
             layout="@layout/panel_movie_top" />
-
-        <TextView
-            android:id="@+id/titleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:textAppearance="?textAppearanceHeadline5"
-            tools:text="Harry Potter and the Order of the Phoenix" />
-
+        
         <TextView
             android:id="@+id/summaryLabel"
             android:layout_width="match_parent"
@@ -31,7 +21,7 @@
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginTop="@dimen/margin_normal"
             android:layout_marginEnd="@dimen/margin_normal"
-            android:lineSpacingMultiplier="1.3"
+            android:lineSpacingMultiplier="1.2"
             android:textAppearance="?textAppearanceBody2"
             tools:text="Harry Potter is a film series based on the eponymous novels by J. K. Rowling. The series is distributed by Warner Bros. and consists of eight fantasy films, beginning with Harry Potter and the Philosopher's Stone and culminating with Harry Potter and the" />
 
@@ -41,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginTop="@dimen/margin_large"
-            android:text="@string/related_movies"
+            android:text="@string/similar_movies"
             android:textAppearance="?textAppearanceHeadline6" />
 
         <androidx.recyclerview.widget.RecyclerView

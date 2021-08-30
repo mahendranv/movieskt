@@ -1,5 +1,6 @@
 package com.ex2.ktmovies.data.remote
 
+import android.annotation.SuppressLint
 import android.util.Log
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.CustomTypeAdapter
@@ -10,6 +11,9 @@ import com.ex2.ktmovies.type.CustomType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 object MovieApiClient {
 
@@ -38,6 +42,23 @@ object MovieApiClient {
             CustomTypeValue.GraphQLString(value)
     }
 
+    @SuppressLint("SimpleDateFormat")
+    private val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")// ""
+
+    private val dateAdapter = object : CustomTypeAdapter<Calendar> {
+
+        override fun decode(value: CustomTypeValue<*>): Calendar {
+            val calendar = Calendar.getInstance()
+            calendar.time = DATE_FORMAT.parse(value.value.toString().replace("Z", "+0000"))
+            return calendar
+        }
+
+        override fun encode(value: Calendar): CustomTypeValue<*> {
+            return CustomTypeValue.GraphQLString(DATE_FORMAT.format(value.time))
+        }
+
+    }
+
     fun createApolloClient(cacheDirectory: File): ApolloClient {
         // Apollo cache - http
         // Directory where cached responses will be stored
@@ -53,6 +74,7 @@ object MovieApiClient {
             .httpCache(ApolloHttpCache(cacheStore))
             .okHttpClient(okHttp)
             .addCustomTypeAdapter(CustomType.URL, urlTypeAdapter)
+            .addCustomTypeAdapter(CustomType.DATE, dateAdapter)
             .build()
     }
 }

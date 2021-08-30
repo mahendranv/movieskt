@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="H,11:8"
+        app:layout_constraintDimensionRatio="H,5:6"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
@@ -25,7 +25,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- TODO: Overlapping content  -->
+    <FrameLayout
+        android:id="@+id/contentScrim"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/content_scrim_height"
+        android:background="@drawable/movie_details_content_scrim"
+        app:layout_constraintBottom_toBottomOf="@id/coverImage" />
+
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:paddingTop="@dimen/margin_xlarge"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceHeadline5"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/metaLabel"
+        tools:text="Harry Potter and the Order of the Phoenix" />
+
+    <TextView
+        android:id="@+id/metaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:textAppearance="?textAppearanceSubtitle2"
+        app:layout_constraintBottom_toBottomOf="@id/coverImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="2019 | Action | 2h 30min" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bookmarkCta"
@@ -34,6 +65,7 @@
         android:layout_marginEnd="@dimen/margin_small"
         android:contentDescription="@string/add_to_favorite"
         android:src="@drawable/baseline_bookmark_white_24dp"
+        android:visibility="gone"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="@id/coverImage"
         app:layout_constraintEnd_toEndOf="parent"

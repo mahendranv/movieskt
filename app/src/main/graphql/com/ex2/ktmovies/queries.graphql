@@ -42,6 +42,8 @@ query MovieDetails($id: ID!) {
                 id
                 name
             }
+            releaseDate
+            runtime
             overview
             runtime
             similar {
