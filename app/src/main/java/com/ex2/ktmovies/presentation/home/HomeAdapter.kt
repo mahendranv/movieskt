@@ -1,14 +1,16 @@
 package com.ex2.ktmovies.presentation.home;
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.loadImage
 import com.ex2.ktmovies.databinding.LiHomeThumbBinding
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.platform.DisplayHelper
 
-typealias MovieLiteClickListener = (MovieLite) -> Unit
+typealias MovieLiteClickListener = (View, MovieLite) -> Unit
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieViewHolder>() {
 
@@ -44,7 +46,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieViewHolder>() {
         init {
             itemView.setOnClickListener {
                 item?.let {
-                    itemClickListener?.invoke(it)
+                    itemClickListener?.invoke(itemView, it)
                 }
             }
         }
@@ -53,6 +55,10 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieViewHolder>() {
             this.item = item
 
             with(binding) {
+                // Unique transition name for each time to support exit transition from
+                // Movie details screen
+                root.transitionName =
+                    root.context.getString(R.string.transition_to_details, item.id)
                 titleLabel.text = item.title
                 movieThumb.loadImage(
                     url = item.imageUrl,

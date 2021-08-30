@@ -1,4 +1,9 @@
 <resources>
+
+    <!--  Transitions  -->
+    <string name="transition_to_details">tx_to_movie_details %1$s</string>
+    <string name="transition_target_movie_details">tx_target_movie_details</string>
+
     <string name="app_name">KtMovies</string>
     <string name="related_movies">Related movies</string>
 </resources>

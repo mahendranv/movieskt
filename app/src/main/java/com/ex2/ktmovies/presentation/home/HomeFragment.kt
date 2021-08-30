@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.ex2.ktmovies.R
 import com.ex2.ktmovies.databinding.FragmentHomeBinding
 import com.ex2.ktmovies.platform.DisplayHelper
 import com.ex2.ktmovies.platform.GridSpacingItemDecoration
@@ -45,12 +47,11 @@ class HomeFragment : Fragment() {
             )
         )
         binding.homeRv.adapter = adapter
-        adapter.setOnItemClickListener { movie ->
-            findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
-                    movie.id
-                )
-            )
+        adapter.setOnItemClickListener { itemView, movie ->
+            val targetName = getString(R.string.transition_target_movie_details)
+            val extras = FragmentNavigatorExtras(itemView to targetName)
+            val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie.id)
+            findNavController().navigate(direction, extras)
         }
         observeFlow()
 

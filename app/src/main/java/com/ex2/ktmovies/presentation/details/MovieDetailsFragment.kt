@@ -2,7 +2,6 @@ package com.ex2.ktmovies.presentation.details
 
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,10 +16,12 @@ import androidx.palette.graphics.Palette
 import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.loadImage
 import com.ex2.ktmovies.common.extensions.showIf
+import com.ex2.ktmovies.common.extensions.themeColor
 import com.ex2.ktmovies.databinding.FragmentMovieDetailsBinding
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.platform.pickPalette
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -37,6 +38,18 @@ class MovieDetailsFragment : Fragment() {
 
     private val adapter by lazy { RelatedMoviesAdapter() }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Transition
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            drawingViewId = R.id.container
+            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+            scrimColor = Color.TRANSPARENT
+            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,6 +62,8 @@ class MovieDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetchMovieDetails(args.movieId)
+
+        binding.root.transitionName = getString(R.string.transition_target_movie_details)
 
         binding.relatedRv.adapter = adapter
         adapter.setOnItemClickListener {
