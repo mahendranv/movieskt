@@ -1,23 +1,30 @@
 package com.ex2.ktmovies.presentation.details
 
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.palette.graphics.Palette
 import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.loadImage
 import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.databinding.FragmentMovieDetailsBinding
 import com.ex2.ktmovies.domain.model.MovieDetails
+import com.ex2.ktmovies.platform.pickPalette
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
-import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
@@ -49,6 +56,9 @@ class MovieDetailsFragment : Fragment() {
                 MovieDetailsFragmentDirections.actionDetailsFragmentSelf(it.id)
             )
         }
+        binding.topPanel.backKey.setOnClickListener {
+            findNavController().popBackStack()
+        }
         observeToFlow()
     }
 
@@ -76,8 +86,31 @@ class MovieDetailsFragment : Fragment() {
             url = details.covers.firstOrNull(),
             fallback = R.drawable.ic_launcher_background
         )
+        repaintContent(details.covers.firstOrNull())
         titleLabel.text = details.title
         summaryLabel.text = details.summary
         adapter.setItems(details.related)
+    }
+
+    /**
+     * Given the url - invokes pattern generator and ensures palette drawn in UI thread
+     */
+    private fun repaintContent(url: String?) {
+        if (url.isNullOrBlank()) return
+
+        lifecycleScope.launch {
+            val palette = pickPalette(requireContext(), url)
+            if (palette != null) {
+                updateColor(palette)
+            }
+        }
+    }
+
+    private fun updateColor(palette: Palette) = with(Dispatchers.Main) {
+        val color = palette.getLightVibrantColor(Color.WHITE)
+        ImageViewCompat.setImageTintList(
+            binding.topPanel.backKey,
+            ColorStateList.valueOf(color)
+        )
     }
 }
