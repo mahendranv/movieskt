@@ -15,6 +15,7 @@ import com.ex2.ktmovies.R
 import com.ex2.ktmovies.databinding.FragmentHomeBinding
 import com.ex2.ktmovies.platform.DisplayHelper
 import com.ex2.ktmovies.platform.GridSpacingItemDecoration
+import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -52,6 +53,12 @@ class HomeFragment : Fragment() {
         )
         binding.homeRv.adapter = adapter
         adapter.setOnItemClickListener { itemView, movie ->
+            exitTransition = MaterialElevationScale(false).apply {
+                duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+            }
+            enterTransition = MaterialElevationScale(true).apply {
+                duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+            }
             val targetName = getString(R.string.transition_target_movie_details)
             val extras = FragmentNavigatorExtras(itemView to targetName)
             val direction =
