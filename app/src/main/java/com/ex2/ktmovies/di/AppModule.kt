@@ -1,6 +1,7 @@
 package com.ex2.ktmovies.di
 
 import android.content.Context
+import coil.ImageLoader
 import com.apollographql.apollo.ApolloClient
 import com.ex2.ktmovies.data.remote.MovieApiClient
 import dagger.Module
@@ -27,4 +28,7 @@ class AppModule {
     @CacheDirectory
     @Provides
     fun cacheDirectory(@ApplicationContext context: Context) = context.cacheDir
+
+    @Provides
+    fun coilImageLoader(@ApplicationContext context: Context) = ImageLoader(context)
 }

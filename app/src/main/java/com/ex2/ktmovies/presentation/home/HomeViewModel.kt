@@ -19,7 +19,11 @@ class HomeViewModel @Inject constructor(
     val movies: StateFlow<List<MovieLite>> = _movies
 
     fun fetchNowPlaying() {
-        liteMoviesUseCase.invoke(
+        if (movies.value.isNotEmpty()) {
+            return
+        }
+
+        liteMoviesUseCase(
             params = GetLiteMoviesUseCase.Params(listType = MovieListType.NOW_PLAYING),
             viewModelScope,
             onResult = { response ->

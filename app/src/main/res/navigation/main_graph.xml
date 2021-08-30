@@ -22,6 +22,10 @@
             android:name="movieId"
             app:argType="string"
             app:nullable="false" />
+        <argument
+            android:name="posterUrl"
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_detailsFragment_self"
             app:destination="@id/detailsFragment" />

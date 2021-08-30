@@ -63,12 +63,14 @@ class MovieDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetchMovieDetails(args.movieId)
 
+        // Transition support
         binding.root.transitionName = getString(R.string.transition_target_movie_details)
+        binding.topPanel.coverImage.loadImage(args.posterUrl)
 
         binding.relatedRv.adapter = adapter
         adapter.setOnItemClickListener {
             findNavController().navigate(
-                MovieDetailsFragmentDirections.actionDetailsFragmentSelf(it.id)
+                MovieDetailsFragmentDirections.actionDetailsFragmentSelf(it.id, it.imageUrl)
             )
         }
         binding.topPanel.backKey.setOnClickListener {
@@ -97,10 +99,10 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun setMovieDetails(details: MovieDetails) = with(binding) {
-        topPanel.coverImage.loadImage(
-            url = details.covers.firstOrNull(),
-            fallback = R.drawable.ic_launcher_background
-        )
+//        topPanel.coverImage.loadImage(
+//            url = details.covers.firstOrNull(),
+//            fallback = R.drawable.ic_launcher_background
+//        )
         repaintContent(details.covers.firstOrNull())
         titleLabel.text = details.title
         summaryLabel.text = details.summary

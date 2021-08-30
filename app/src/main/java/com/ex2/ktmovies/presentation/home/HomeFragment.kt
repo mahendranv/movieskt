@@ -54,10 +54,12 @@ class HomeFragment : Fragment() {
         adapter.setOnItemClickListener { itemView, movie ->
             val targetName = getString(R.string.transition_target_movie_details)
             val extras = FragmentNavigatorExtras(itemView to targetName)
-            val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie.id)
+            val direction =
+                HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie.id, movie.imageUrl)
             findNavController().navigate(direction, extras)
         }
         observeFlow()
+
 
         // API call
         viewModel.fetchNowPlaying()
