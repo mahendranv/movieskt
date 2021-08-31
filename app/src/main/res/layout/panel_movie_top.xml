@@ -19,9 +19,9 @@
         android:layout_width="?actionBarSize"
         android:layout_height="?actionBarSize"
         android:layout_marginTop="@dimen/margin_normal"
-        android:background="?android:selectableItemBackgroundBorderless"
-        android:fitsSystemWindows="true"
+        android:background="@drawable/ripple_back_arrow"
         android:src="@drawable/baseline_arrow_back_black_24dp"
+        android:tint="?colorOnSurface"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
