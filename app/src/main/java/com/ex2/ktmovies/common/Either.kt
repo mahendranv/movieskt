@@ -61,7 +61,7 @@ sealed class Either<out L, out R> {
      * @see Left
      * @see Right
      */
-    fun fold(fnL: (L) -> Any, fnR: (R) -> Any): Any =
+    fun fold(fnL: (L) -> Unit, fnR: (R) -> Unit): Any =
         when (this) {
             is Left -> fnL(a)
             is Right -> fnR(b)

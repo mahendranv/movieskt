@@ -12,12 +12,13 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ex2.ktmovies.R
+import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.databinding.FragmentHomeBinding
 import com.ex2.ktmovies.platform.DisplayHelper
 import com.ex2.ktmovies.platform.GridSpacingItemDecoration
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -65,6 +66,9 @@ class HomeFragment : Fragment() {
                 HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie.id, movie.imageUrl)
             findNavController().navigate(direction, extras)
         }
+        binding.progressCircular.apply {
+            isIndeterminate = true
+        }
         observeFlow()
 
         // API call
@@ -72,10 +76,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeFlow() = lifecycleScope.launchWhenStarted {
-        viewModel.movies.collect { movies ->
-            adapter.setItems(movies)
-            adapter.notifyDataSetChanged()
-        }
+        viewModel.pageState
+            .onEach { state ->
+                binding.progressCircular.showIf(state == HomeViewModel.PageState.Loading)
+            }
+            .launchIn(lifecycleScope)
+
+        viewModel.movies
+            .onEach { movies ->
+                adapter.setItems(movies)
+                adapter.notifyDataSetChanged()
+            }
+            .launchIn(lifecycleScope)
     }
 
     companion object {

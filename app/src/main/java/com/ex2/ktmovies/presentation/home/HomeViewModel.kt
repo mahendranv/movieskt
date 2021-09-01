@@ -17,23 +17,26 @@ class HomeViewModel @Inject constructor(
 
     private val _movies: MutableStateFlow<List<MovieLite>> = MutableStateFlow(emptyList())
     val movies: StateFlow<List<MovieLite>> = _movies
+    private val _pageState: MutableStateFlow<PageState> = MutableStateFlow(PageState.Loading)
+    val pageState: StateFlow<PageState> = _pageState
 
     fun fetchNowPlaying() {
         if (movies.value.isNotEmpty()) {
             return
         }
 
+        _pageState.value = PageState.Loading
         liteMoviesUseCase(
             params = GetLiteMoviesUseCase.Params(listType = MovieListType.NOW_PLAYING),
             viewModelScope,
             onResult = { response ->
                 response.fold(
                     {
-
+                        _pageState.value = PageState.Error
                     },
                     {
                         _movies.value = it
-                        Any()
+                        _pageState.value = PageState.Loaded
                     }
                 )
             }
@@ -41,7 +44,8 @@ class HomeViewModel @Inject constructor(
     }
 
     sealed class PageState {
-
-
+        object Loading : PageState()
+        object Loaded : PageState()
+        object Error : PageState()
     }
 }

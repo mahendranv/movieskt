@@ -28,7 +28,6 @@ class MovieDetailsViewModel @Inject constructor(
                     // TODO: Handle failure
                 }, {
                     _pageState.value = PageState.Loaded(it)
-                    ""
                 })
             }
         )
