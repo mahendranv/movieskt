@@ -7,4 +7,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "KtMovies"
-include ':app'
+include(":app")
