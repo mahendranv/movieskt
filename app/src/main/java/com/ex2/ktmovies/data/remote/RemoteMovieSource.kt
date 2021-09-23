@@ -13,6 +13,7 @@ import com.ex2.ktmovies.data.source.MovieService
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieListType
 import com.ex2.ktmovies.domain.model.MovieLite
+import com.ex2.ktmovies.domain.model.MovieResult
 import javax.inject.Inject
 
 class RemoteMovieSource @Inject constructor(
@@ -51,7 +52,7 @@ class RemoteMovieSource @Inject constructor(
         }
     }
 
-    override suspend fun searchMovie(term: String): Either<Failure, List<MovieLite>> {
+    override suspend fun searchMovie(term: String): Either<Failure, List<MovieResult>> {
         val response = apolloClient.query(SearchMovieQuery(term))
             .toBuilder()
             .httpCachePolicy(HttpCachePolicy.CACHE_FIRST)
@@ -59,7 +60,7 @@ class RemoteMovieSource @Inject constructor(
             .await()
 
         val data = response.data?.search?.edges?.mapNotNull { it?.node?.asMovie?.toDomainModel() }
-        return if (response.hasErrors() || data == null) {
+        return if (data == null) {
             Either.Left(Failure.UNKNOWN)
         } else {
             Either.Right(data)

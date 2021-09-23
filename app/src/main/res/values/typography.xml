@@ -16,4 +16,9 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="AppText.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:alpha">0.5</item>
+    </style>
+
 </resources>

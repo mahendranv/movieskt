@@ -4,7 +4,9 @@ import com.ex2.ktmovies.MovieDetailsQuery
 import com.ex2.ktmovies.SearchMovieQuery
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieLite
+import com.ex2.ktmovies.domain.model.MovieResult
 import com.ex2.ktmovies.fragment.GMovieLite
+import java.util.*
 
 fun GMovieLite.toDomainModel(): MovieLite {
     return MovieLite(
@@ -34,11 +36,18 @@ fun MovieDetailsQuery.AsMovie.toDomainModel(): MovieDetails {
     )
 }
 
-fun SearchMovieQuery.AsMovie.toDomainModel(): MovieLite {
-    return MovieLite(
-        id = id ?: "",
-        title = title ?: "",
-        rating = rating ?: 0.0,
-        imageUrl = images.posters.firstOrNull()?.image
+fun SearchMovieQuery.AsMovie.toDomainModel(): MovieResult {
+    return MovieResult(
+        id = id,
+        title = title,
+        rating = rating,
+        imageUrl = images.posters.firstOrNull()?.image,
+
+        overview = overview,
+        genres = genres.take(2).joinToString(", ") { it.name },
+        numberOfRatings = numberOfRatings,
+
+        releaseDate = releaseDate,
+        runTime = runtime,
     )
 }

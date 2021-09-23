@@ -5,6 +5,7 @@ import com.ex2.ktmovies.common.Failure
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieListType
 import com.ex2.ktmovies.domain.model.MovieLite
+import com.ex2.ktmovies.domain.model.MovieResult
 
 interface MovieRepo {
 
@@ -12,5 +13,5 @@ interface MovieRepo {
 
     suspend fun fetchMovieDetails(id: String): Either<Failure, MovieDetails>
 
-    suspend fun searchMovies(term: String): Either<Failure, List<MovieLite>>
+    suspend fun searchMovies(term: String): Either<Failure, List<MovieResult>>
 }

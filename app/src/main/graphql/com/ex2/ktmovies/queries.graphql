@@ -68,11 +68,19 @@ query SearchMovie($term: String!) {
                         id
                         title
                         rating
+                        numberOfRatings
                         images {
                             posters {
                                 image(size: W780)
                             }
                         }
+                        genres {
+                            id
+                            name
+                        }
+                        releaseDate
+                        runtime
+                        overview
                     }
                 }
             }

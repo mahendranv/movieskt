@@ -7,4 +7,7 @@
     <dimen name="margin_xlarge">32dp</dimen>
     <dimen name="content_scrim_height">180dp</dimen>
     <dimen name="progress_bar_size">56dp</dimen>
+
+    <dimen name="search_item_thumb_width">90dp</dimen>
+    <dimen name="search_item_thumb_height">120dp</dimen>
 </resources>

@@ -6,6 +6,7 @@ import com.ex2.ktmovies.data.source.MovieService
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieListType
 import com.ex2.ktmovies.domain.model.MovieLite
+import com.ex2.ktmovies.domain.model.MovieResult
 import com.ex2.ktmovies.domain.repo.MovieRepo
 import javax.inject.Inject
 
@@ -19,7 +20,7 @@ class MovieRepoImpl @Inject constructor(
     override suspend fun fetchMovieDetails(id: String): Either<Failure, MovieDetails> =
         movieService.fetchMovieDetails(id)
 
-    override suspend fun searchMovies(term: String): Either<Failure, List<MovieLite>> =
+    override suspend fun searchMovies(term: String): Either<Failure, List<MovieResult>> =
         movieService.searchMovie(term)
 
 }

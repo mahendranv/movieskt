@@ -3,6 +3,7 @@ package com.ex2.ktmovies.presentation.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ex2.ktmovies.domain.model.MovieLite
+import com.ex2.ktmovies.domain.model.MovieResult
 import com.ex2.ktmovies.domain.usecase.SearchMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,7 +33,7 @@ class SearchViewModel @Inject constructor(
 
     sealed class PageState {
         object Loading : PageState()
-        data class Loaded(val list: List<MovieLite>) : PageState()
+        data class Loaded(val list: List<MovieResult>) : PageState()
         data class Error(val message: String) : PageState()
     }
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:padding="@dimen/margin_small">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/movie_thumb"
+        android:layout_width="@dimen/search_item_thumb_width"
+        android:layout_height="@dimen/search_item_thumb_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textAppearance="@style/AppText"
+        app:layout_constraintStart_toEndOf="@id/movie_thumb"
+        app:layout_constraintTop_toTopOf="@id/movie_thumb"
+        tools:text="The batman" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/rating_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xsmall"
+        android:drawableStart="@drawable/ic_rating_star"
+        android:drawablePadding="@dimen/margin_xsmall"
+        android:drawableTint="?colorRating"
+        android:textAppearance="@style/AppText.Body2"
+        app:layout_constraintEnd_toEndOf="@id/movie_thumb"
+        app:layout_constraintStart_toStartOf="@id/movie_thumb"
+        app:layout_constraintTop_toBottomOf="@id/movie_thumb"
+        tools:text="4.5/398" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/meta_label"
+        style="@style/AppText.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:ellipsize="end"
+        android:lines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/title_label"
+        app:layout_constraintTop_toBottomOf="@id/title_label"
+        tools:text="2021 | Action, Comedy | 120 min" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/description_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:ellipsize="end"
+        android:maxLines="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/title_label"
+        app:layout_constraintTop_toBottomOf="@id/meta_label"
+        tools:text="@tools:sample/lorem/random" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
