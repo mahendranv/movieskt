@@ -1,22 +1,26 @@
 package com.ex2.ktmovies.presentation.search
 
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.ex2.ktmovies.common.extensions.hideKeyboard
 import com.ex2.ktmovies.common.extensions.showKeyboard
 import com.ex2.ktmovies.common.extensions.trimmedText
 import com.ex2.ktmovies.databinding.FragmentSearchBinding
 import com.ex2.ktmovies.platform.DisplayHelper
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
+
+    private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +48,7 @@ class SearchFragment : Fragment() {
             val term = textView.trimmedText()
             if (actionId == EditorInfo.IME_ACTION_SEARCH && term.isNotEmpty()) {
                 binding.searchInput.hideKeyboard()
+                viewModel.search(term)
             }
             true
         }

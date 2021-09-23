@@ -41,8 +41,4 @@ class MovieDetailsViewModel @Inject constructor(
 
         data class Error(val error: String) : PageState()
     }
-
-    companion object {
-
-    }
 }

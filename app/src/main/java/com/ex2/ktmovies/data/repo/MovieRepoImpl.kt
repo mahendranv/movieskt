@@ -19,4 +19,7 @@ class MovieRepoImpl @Inject constructor(
     override suspend fun fetchMovieDetails(id: String): Either<Failure, MovieDetails> =
         movieService.fetchMovieDetails(id)
 
+    override suspend fun searchMovies(term: String): Either<Failure, List<MovieLite>> =
+        movieService.searchMovie(term)
+
 }
