@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.loadImage
 import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.databinding.ItemMovieSearchResultBinding
@@ -11,7 +12,7 @@ import com.ex2.ktmovies.domain.model.MovieResult
 import com.ex2.ktmovies.presentation.details.prepareMeta
 import com.ex2.ktmovies.presentation.details.ratingText
 
-typealias MovieLiteClickListener = (MovieResult) -> Unit
+typealias MovieLiteClickListener = (ItemMovieSearchResultBinding, MovieResult) -> Unit
 
 class MovieSearchResultAdapter : RecyclerView.Adapter<MovieSearchResultAdapter.MovieViewHolder>() {
 
@@ -49,7 +50,7 @@ class MovieSearchResultAdapter : RecyclerView.Adapter<MovieSearchResultAdapter.M
         init {
             itemView.setOnClickListener {
                 item?.let {
-                    itemClickListener?.invoke(it)
+                    itemClickListener?.invoke(binding, it)
                 }
             }
         }
@@ -59,6 +60,9 @@ class MovieSearchResultAdapter : RecyclerView.Adapter<MovieSearchResultAdapter.M
             this.item = item
 
             with(binding) {
+                // Unique transition name for each line item
+                movieThumb.transitionName = root.context.getString(R.string.transition_to_details, item.id)
+
                 titleLabel.text = item.title
                 movieThumb.loadImage(item.imageUrl)
                 ratingLabel.text = item.ratingText()

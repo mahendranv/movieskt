@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.hideKeyboard
 import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.common.extensions.showKeyboard
 import com.ex2.ktmovies.common.extensions.trimmedText
 import com.ex2.ktmovies.databinding.FragmentSearchBinding
 import com.ex2.ktmovies.platform.DisplayHelper
+import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -41,6 +45,9 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
+
         binding.topBar.updatePadding(top = DisplayHelper.getStatusBarHeight(requireContext()))
 
         if (adapter.itemCount == 0) {
@@ -63,10 +70,19 @@ class SearchFragment : Fragment() {
         binding.searchRv.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.searchRv.adapter = adapter
-        adapter.setOnItemClickListener {
+        adapter.setOnItemClickListener { binding, item ->
+            exitTransition = MaterialElevationScale(false).apply {
+                duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+            }
+            enterTransition = MaterialElevationScale(true).apply {
+                duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+            }
+
+            val targetName = getString(R.string.transition_target_movie_details)
+            val extras = FragmentNavigatorExtras(binding.movieThumb to targetName)
             val direction =
-                SearchFragmentDirections.actionSearchFragmentToDetailsFragment(it.id, it.imageUrl)
-            findNavController().navigate(direction)
+                SearchFragmentDirections.actionSearchFragmentToDetailsFragment(item.id, item.imageUrl)
+            findNavController().navigate(direction, extras)
         }
         binding.progressCircular.isIndeterminate = true
         observeFlow()
