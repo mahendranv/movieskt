@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ex2.ktmovies.common.extensions.hideKeyboard
+import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.common.extensions.showKeyboard
 import com.ex2.ktmovies.common.extensions.trimmedText
 import com.ex2.ktmovies.databinding.FragmentSearchBinding
@@ -67,24 +68,21 @@ class SearchFragment : Fragment() {
                 SearchFragmentDirections.actionSearchFragmentToDetailsFragment(it.id, it.imageUrl)
             findNavController().navigate(direction)
         }
-
+        binding.progressCircular.isIndeterminate = true
         observeFlow()
     }
 
     private fun observeFlow() {
         lifecycleScope.launchWhenStarted {
             viewModel.pageState.collect {
+                binding.progressCircular.showIf(it == SearchViewModel.PageState.Loading)
                 when (it) {
-                    is SearchViewModel.PageState.Error -> {
-
-                    }
                     is SearchViewModel.PageState.Loaded -> {
                         adapter.setItems(it.list)
                         adapter.notifyDataSetChanged()
                     }
-                    SearchViewModel.PageState.Loading -> {
-
-                    }
+                    is SearchViewModel.PageState.Error,
+                    SearchViewModel.PageState.Loading -> Unit
                 }
             }
         }

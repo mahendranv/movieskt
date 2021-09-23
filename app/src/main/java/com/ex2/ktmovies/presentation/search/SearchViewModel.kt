@@ -16,7 +16,7 @@ class SearchViewModel @Inject constructor(
     private val searchMoviesUseCase: SearchMoviesUseCase
 ) : ViewModel() {
 
-    private val _pageState = MutableStateFlow<PageState>(PageState.Loading)
+    private val _pageState = MutableStateFlow<PageState>(PageState.Initial)
     val pageState: StateFlow<PageState> = _pageState
 
     fun search(term: String) {
@@ -33,6 +33,7 @@ class SearchViewModel @Inject constructor(
 
     sealed class PageState {
         object Loading : PageState()
+        object Initial : PageState()
         data class Loaded(val list: List<MovieResult>) : PageState()
         data class Error(val message: String) : PageState()
     }
