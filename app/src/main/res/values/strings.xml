@@ -7,4 +7,5 @@
     <string name="app_name">KtMovies</string>
     <string name="similar_movies">Similar movies</string>
     <string name="add_to_favorite">Add to favorite</string>
+    <string name="search">Search</string>
 </resources>

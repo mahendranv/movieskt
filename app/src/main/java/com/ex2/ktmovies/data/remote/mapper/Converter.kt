@@ -1,6 +1,7 @@
 package com.ex2.ktmovies.data.remote.mapper
 
 import com.ex2.ktmovies.MovieDetailsQuery
+import com.ex2.ktmovies.SearchMovieQuery
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.fragment.GMovieLite
@@ -30,5 +31,14 @@ fun MovieDetailsQuery.AsMovie.toDomainModel(): MovieDetails {
         images = images.posters.map { it.image },
         related = similar.edges?.filterNotNull()?.map { it.fragments.gMovieLite.toDomainModel() }
             ?: emptyList()
+    )
+}
+
+fun SearchMovieQuery.AsMovie.toDomainModel(): MovieLite {
+    return MovieLite(
+        id = id ?: "",
+        title = title ?: "",
+        rating = rating ?: 0.0,
+        imageUrl = images.posters.firstOrNull()?.image
     )
 }

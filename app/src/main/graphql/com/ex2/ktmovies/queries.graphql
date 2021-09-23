@@ -54,3 +54,28 @@ query MovieDetails($id: ID!) {
         }
     }
 }
+
+query SearchMovie($term: String!) {
+    search(term: $term) {
+        pageInfo {
+            startCursor
+            hasNextPage
+        }
+        ... on MovieOrTVOrPeopleConnection {
+            edges {
+                node {
+                    ... on Movie {
+                        id
+                        title
+                        rating
+                        images {
+                            posters {
+                                image(size: W780)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

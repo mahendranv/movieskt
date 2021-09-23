@@ -3,6 +3,7 @@ package com.ex2.ktmovies.platform
 import android.content.Context
 import android.content.res.Resources
 import android.util.TypedValue
+import android.view.View
 
 /**
  * Helper class for display
@@ -55,6 +56,14 @@ class DisplayHelper {
         fun getNavigationBarHeight(context: Context): Int {
             val resourceId: Int =
                 context.resources.getIdentifier("navigation_bar_height", "dimen", "android")
+            return if (resourceId != 0) {
+                context.resources.getDimensionPixelSize(resourceId)
+            } else 0
+        }
+
+        fun getStatusBarHeight(context: Context): Int {
+            val resourceId: Int =
+                context.resources.getIdentifier("status_bar_height", "dimen", "android")
             return if (resourceId != 0) {
                 context.resources.getDimensionPixelSize(resourceId)
             } else 0

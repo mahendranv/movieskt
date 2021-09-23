@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnPreDraw
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -44,6 +45,14 @@ class HomeFragment : Fragment() {
         view.doOnPreDraw { startPostponedEnterTransition() }
 
         // UI
+        binding.toolBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            topMargin = DisplayHelper.getStatusBarHeight(requireContext())
+        }
+        binding.toolBar.setOnMenuItemClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchFragment())
+            true
+        }
+
         binding.homeRv.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
         binding.homeRv.addItemDecoration(
             GridSpacingItemDecoration(

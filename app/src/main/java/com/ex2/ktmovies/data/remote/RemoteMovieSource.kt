@@ -5,6 +5,7 @@ import com.apollographql.apollo.api.cache.http.HttpCachePolicy
 import com.apollographql.apollo.coroutines.await
 import com.ex2.ktmovies.MovieDetailsQuery
 import com.ex2.ktmovies.NowPlayingQuery
+import com.ex2.ktmovies.SearchMovieQuery
 import com.ex2.ktmovies.common.Either
 import com.ex2.ktmovies.common.Failure
 import com.ex2.ktmovies.data.remote.mapper.toDomainModel
@@ -47,6 +48,21 @@ class RemoteMovieSource @Inject constructor(
             Either.Left(Failure.UNKNOWN)
         } else {
             Either.Right(data.toDomainModel())
+        }
+    }
+
+    override suspend fun searchMovie(term: String): Either<Failure, List<MovieLite>> {
+        val response = apolloClient.query(SearchMovieQuery(term))
+            .toBuilder()
+            .httpCachePolicy(HttpCachePolicy.CACHE_FIRST)
+            .build()
+            .await()
+
+        val data = response.data?.search?.edges?.mapNotNull { it?.node?.asMovie?.toDomainModel() }
+        return if (response.hasErrors() || data == null) {
+            Either.Left(Failure.UNKNOWN)
+        } else {
+            Either.Right(data)
         }
     }
 }

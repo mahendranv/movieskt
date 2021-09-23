@@ -11,4 +11,6 @@ interface MovieService {
     suspend fun fetchMovies(movieListType: MovieListType): Either<Failure, List<MovieLite>>
 
     suspend fun fetchMovieDetails(id: String): Either<Failure, MovieDetails>
+
+    suspend fun searchMovie(term: String): Either<Failure, List<MovieLite>>
 }
