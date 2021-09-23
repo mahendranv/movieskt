@@ -40,6 +40,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingTop="@dimen/margin_normal"
+            android:paddingBottom="@dimen/margin_large"
             tools:listitem="@layout/item_movie_search_result" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -53,6 +54,11 @@ class HomeFragment : Fragment() {
             true
         }
 
+        binding.homeRv.updatePadding(
+            top = DisplayHelper.getStatusBarHeight(requireContext()) + DisplayHelper.getActionBarHeight(
+                requireContext()
+            )
+        )
         binding.homeRv.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
         binding.homeRv.addItemDecoration(
             GridSpacingItemDecoration(
