@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="rating">#fff89a19</color>
+
+    <!--  Search   -->
+    <color name="search_bar_color">#e3e1f6</color>
+    <color name="icon_color_on_search">#99888888</color>
 </resources>
