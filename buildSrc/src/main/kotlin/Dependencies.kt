@@ -52,4 +52,5 @@ object Deps {
     val espresso by lazy { "androidx.test.espresso:espresso-core:3.4.0" }
     val navigationTest by lazy { "androidx.navigation:navigation-testing:${Versions.navVersion}" }
     val truth by lazy { "com.google.truth:truth:1.1.3" }
+    val coroutineTest by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}" }
 }

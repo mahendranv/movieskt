@@ -100,4 +100,5 @@ dependencies {
     androidTestImplementation(Deps.espresso)
     androidTestImplementation(Deps.navigationTest)
     testImplementation(Deps.truth)
+    testImplementation(Deps.coroutineTest)
 }
