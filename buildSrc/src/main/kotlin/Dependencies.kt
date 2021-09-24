@@ -51,4 +51,5 @@ object Deps {
     val junitAndroid by lazy { "androidx.test.ext:junit:1.1.3" }
     val espresso by lazy { "androidx.test.espresso:espresso-core:3.4.0" }
     val navigationTest by lazy { "androidx.navigation:navigation-testing:${Versions.navVersion}" }
+    val truth by lazy { "com.google.truth:truth:1.1.3" }
 }

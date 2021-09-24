@@ -99,4 +99,5 @@ dependencies {
     androidTestImplementation(Deps.junitAndroid)
     androidTestImplementation(Deps.espresso)
     androidTestImplementation(Deps.navigationTest)
+    testImplementation(Deps.truth)
 }

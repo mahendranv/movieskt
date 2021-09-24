@@ -51,11 +51,13 @@ fun MovieResult.prepareMeta(): String {
 
 fun MovieResult.ratingText(): String {
     val list = mutableListOf<Any>()
-    list.add(rating)
-    if (numberOfRatings >= 1000) {
-        list.add("${numberOfRatings / 1000}k")
-    } else {
-        list.add(numberOfRatings)
+    if (rating > 0) {
+        list.add(rating)
+        when {
+            numberOfRatings >= 1000 -> list.add("${numberOfRatings / 1000}k")
+            numberOfRatings > 0 -> list.add(numberOfRatings)
+            else -> Unit
+        }
     }
     return list.joinToString("/")
 }
