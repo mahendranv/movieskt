@@ -18,7 +18,8 @@ android {
         versionCode = ConfigData.versionCode
         versionName = ConfigData.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.ex2.ktmovies.MovieAppTestRunner"
     }
 
     buildFeatures {
@@ -101,4 +102,7 @@ dependencies {
     androidTestImplementation(Deps.navigationTest)
     testImplementation(Deps.truth)
     testImplementation(Deps.coroutineTest)
+    androidTestImplementation(Deps.hiltAndroidTesting)
+    kaptAndroidTest(Deps.hiltTestAndroidCompiler)
+    androidTestImplementation(Deps.androidTestRunner)
 }

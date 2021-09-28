@@ -53,4 +53,7 @@ object Deps {
     val navigationTest by lazy { "androidx.navigation:navigation-testing:${Versions.navVersion}" }
     val truth by lazy { "com.google.truth:truth:1.1.3" }
     val coroutineTest by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}" }
+    val hiltAndroidTesting by lazy { "com.google.dagger:hilt-android-testing:${Versions.hilt}" }
+    val hiltTestAndroidCompiler by lazy { "com.google.dagger:hilt-android-compiler:${Versions.hilt}" }
+    val androidTestRunner by lazy { "androidx.test:runner:1.4.0" }
 }
