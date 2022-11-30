@@ -1,7 +1,7 @@
 plugins {
-    id("kotlin-kapt")
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
     id("com.apollographql.apollo")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
