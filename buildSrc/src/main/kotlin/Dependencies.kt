@@ -10,6 +10,12 @@ object Deps {
 
     val appCompat by lazy { "androidx.appcompat:appcompat:1.3.1" }
 
+    // TMDB
+    object TMDB {
+        // https://mvnrepository.com/artifact/com.github.holgerbrandl/themoviedbapi
+        val holgerbrandl by lazy { "com.github.holgerbrandl:themoviedbapi:${Versions.tmdb_Api}" }
+    }
+
     // Navigation
     object Navigation {
         val fragment by lazy { "androidx.navigation:navigation-fragment-ktx:${Versions.navVersion}" }

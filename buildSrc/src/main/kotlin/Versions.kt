@@ -7,4 +7,6 @@ object Versions {
     const val apollo = "2.5.9"
     const val hilt = "2.44.2"
     const val coroutines = "1.5.1"
+
+    const val tmdb_Api = "1.12"
 }

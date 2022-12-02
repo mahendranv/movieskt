@@ -9,8 +9,10 @@ import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.domain.model.MovieResult
 import com.ex2.ktmovies.domain.repo.MovieRepo
 import javax.inject.Inject
+import javax.inject.Named
 
 class MovieRepoImpl @Inject constructor(
+    @Named("tmdb_v1")
     private val movieService: MovieService
 ) : MovieRepo {
 

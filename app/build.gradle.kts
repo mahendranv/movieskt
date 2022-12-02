@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -20,6 +22,10 @@ android {
 
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner = "com.ex2.ktmovies.MovieAppTestRunner"
+
+        val props = Properties()
+        props.load(project.rootProject.file("local.properties").inputStream())
+        buildConfigField("String", "TMDB_API_KEY", props["tmdb_api_key"] as String)
     }
 
     buildFeatures {
@@ -46,6 +52,14 @@ android {
             jvmTarget = "1.8"
         }
     }
+
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/NOTICE.txt")
+    }
 }
 
 apollo {
@@ -59,6 +73,10 @@ apollo {
 }
 
 dependencies {
+    // TMDB
+    implementation(Deps.TMDB.holgerbrandl) {
+        exclude("commons-logging", "commons-logging")
+    }
 
     // Navigation
     implementation(Deps.Navigation.fragment)
