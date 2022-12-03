@@ -41,7 +41,8 @@ object Deps {
     val okHttpBOM by lazy { "com.squareup.okhttp3:okhttp-bom:4.9.0" }
     val okHttp by lazy { "com.squareup.okhttp3:okhttp" }
     val okHttpLoggingInterceptor by lazy { "com.squareup.okhttp3:logging-interceptor" }
-    val coil by lazy { "io.coil-kt:coil:1.3.2" }
+    val coil by lazy { "io.coil-kt:coil:${Versions.coil}" }
+    val coilSvg by lazy { "io.coil-kt:coil-svg:${Versions.coil}" }
 
     // Apollo
     val apolloRuntime by lazy { "com.apollographql.apollo:apollo-runtime:${Versions.apollo}" }

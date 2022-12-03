@@ -2,6 +2,7 @@ package com.ex2.ktmovies.di
 
 import android.content.Context
 import coil.ImageLoader
+import coil.decode.SvgDecoder
 import com.apollographql.apollo.ApolloClient
 import com.ex2.ktmovies.BuildConfig
 import com.ex2.ktmovies.data.remote.MovieApiClient
@@ -42,7 +43,10 @@ class AppModule {
     fun cacheDirectory(@ApplicationContext context: Context): File = context.cacheDir
 
     @Provides
-    fun coilImageLoader(@ApplicationContext context: Context) = ImageLoader(context)
+    fun coilImageLoader(@ApplicationContext context: Context) =
+        ImageLoader.Builder(context).components {
+            add(SvgDecoder.Factory())
+        }.build()
 
     @Provides
     @Named("tmdb_api_key")

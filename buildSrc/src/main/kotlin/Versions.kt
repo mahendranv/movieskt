@@ -9,4 +9,5 @@ object Versions {
     const val coroutines = "1.5.1"
 
     const val tmdb_Api = "1.12"
+    const val coil = "2.2.2"
 }

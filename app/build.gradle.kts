@@ -103,6 +103,7 @@ dependencies {
     implementation(Deps.okHttp)
     implementation(Deps.okHttpLoggingInterceptor)
     implementation(Deps.coil)
+    implementation(Deps.coilSvg)
 
     // Apollo
     implementation(Deps.apolloRuntime)
