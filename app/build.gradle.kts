@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
     id("com.apollographql.apollo")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")

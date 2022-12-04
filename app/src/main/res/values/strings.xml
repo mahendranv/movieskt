@@ -14,4 +14,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="powered_by">Powered by</string>
+
+    <string name="type_now_playing">Now playing</string>
+    <string name="type_trending">Trending</string>
+    <string name="type_top_rated">Top rated</string>
+    <string name="hint_search_title">Try \'The Batman\', \'Sivakasi\'</string>
+
+    <string-array name="arr_movie_sections">
+        <item>Trending</item>
+        <item>Now playing</item>
+        <item>Top rated</item>
+    </string-array>
 </resources>

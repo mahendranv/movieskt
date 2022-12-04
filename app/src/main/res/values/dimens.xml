@@ -11,4 +11,7 @@
     <dimen name="search_item_thumb_width">90dp</dimen>
     <dimen name="search_item_thumb_height">120dp</dimen>
     <dimen name="size_logos">48dp</dimen>
+
+
+    <integer name="listing_span_count">2</integer>
 </resources>

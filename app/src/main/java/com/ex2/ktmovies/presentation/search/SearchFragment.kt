@@ -48,7 +48,7 @@ class SearchFragment : Fragment() {
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
 
-        binding.topBar.updatePadding(top = DisplayHelper.getStatusBarHeight(requireContext()))
+//        binding.topBar.updatePadding(top = DisplayHelper.getStatusBarHeight(requireContext()))
 
         if (adapter.itemCount == 0) {
             binding.searchInput.requestFocus()

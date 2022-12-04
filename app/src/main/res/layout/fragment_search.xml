@@ -21,7 +21,7 @@
             android:drawableStart="@drawable/baseline_search_white_24dp"
             android:drawablePadding="@dimen/margin_small"
             android:drawableTint="@color/icon_color_on_search"
-            android:hint="Try 'The Batman', 'Sivakasi'"
+            android:hint="@string/hint_search_title"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"

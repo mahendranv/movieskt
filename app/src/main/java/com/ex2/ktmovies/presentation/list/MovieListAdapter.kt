@@ -1,4 +1,4 @@
-package com.ex2.ktmovies.presentation.home;
+package com.ex2.ktmovies.presentation.list;
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import com.ex2.ktmovies.platform.DisplayHelper
 
 typealias MovieLiteClickListener = (View, MovieLite) -> Unit
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MovieViewHolder>() {
+class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>() {
 
     private var items = emptyList<MovieLite>()
 
