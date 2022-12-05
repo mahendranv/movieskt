@@ -52,7 +52,7 @@ fun MovieResult.prepareMeta(): String {
 fun MovieResult.ratingText(): String {
     val list = mutableListOf<Any>()
     if (rating > 0) {
-        list.add(rating)
+        list.add(String.format("%.1f", rating))
         when {
             numberOfRatings >= 1000 -> list.add("${numberOfRatings / 1000}k")
             numberOfRatings > 0 -> list.add(numberOfRatings)

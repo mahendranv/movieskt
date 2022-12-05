@@ -3,6 +3,7 @@ package com.ex2.ktmovies.data.tmdb
 import android.annotation.SuppressLint
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieLite
+import com.ex2.ktmovies.domain.model.MovieResult
 import info.movito.themoviedbapi.model.MovieDb
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -25,6 +26,18 @@ fun MovieDb.toMovieLite(): MovieLite = MovieLite(
     title = this.title,
     rating = this.voteAverage.toDouble(),
     imageUrl = this.posterPath.inListingResolution()
+)
+
+fun MovieDb.toMovieResult(): MovieResult = MovieResult(
+    id = this.id.toString(),
+    title = this.title,
+    rating = this.voteAverage.toDouble(),
+    imageUrl = this.posterPath.inListingResolution(),
+    overview = this.overview,
+    genres = this.genres?.take(2)?.joinToString { ", " } ?: "",
+    releaseDate = parseDate(this.releaseDate),
+    numberOfRatings = this.voteCount,
+    runTime = this.runtime
 )
 
 @SuppressLint("SimpleDateFormat")

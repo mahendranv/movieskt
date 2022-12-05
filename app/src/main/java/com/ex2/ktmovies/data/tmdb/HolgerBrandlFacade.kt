@@ -9,11 +9,6 @@ import com.ex2.ktmovies.domain.model.MovieResult
 import info.movito.themoviedbapi.TmdbApi
 import info.movito.themoviedbapi.TmdbMovies
 import info.movito.themoviedbapi.TmdbMovies.MovieMethod
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -26,7 +21,9 @@ class HolgerBrandlFacade @Inject constructor(
      * A Lazy property which should be called from non-UI thread. There are n/w calls invoked during
      * initialization. So, keep it lazy and ensure only invoked from methods on worker thread.
      */
-    private val api: TmdbMovies by lazy { TmdbApi(apiKey).movies }
+    private val api: TmdbMovies by lazy { tmdbApi.movies }
+
+    private val tmdbApi : TmdbApi by lazy { TmdbApi(apiKey) }
 
     @WorkerThread
     fun fetchMovieDetails(movieId: String): MovieDetails? {
@@ -56,8 +53,8 @@ class HolgerBrandlFacade @Inject constructor(
 
     @WorkerThread
     fun searchMovie(term: String): List<MovieResult>? {
-        // TODO: Search is not supported yet - to be explored
-        return emptyList()
+        val result = tmdbApi.search.searchMovie(term, null, LANGUAGE, false, null)
+        return result?.results?.map { it.toMovieResult() }
     }
 
     companion object {
