@@ -9,6 +9,11 @@ And to go [MAD](https://madscorecard.withgoogle.com/scorecards/2138907411/)...
 
 ![image](https://user-images.githubusercontent.com/6584143/134556913-b2388496-37d4-4f6d-89ab-dd31539f0e92.png)
 
+| ![image](https://user-images.githubusercontent.com/6584143/205547183-bd5ba322-532d-4046-8535-245aa377e064.png) | ![image](https://user-images.githubusercontent.com/6584143/205547221-5f6eda04-9e56-45d3-b719-e918ce7e4b79.png) | ![image](https://user-images.githubusercontent.com/6584143/205547566-7ba21612-9bba-4a79-aaf1-8df2a0d559de.jpg) |
+|-|-|-|
+
+
+
 
 ## Features
 1. Now playing list
@@ -32,9 +37,6 @@ And to go [MAD](https://madscorecard.withgoogle.com/scorecards/2138907411/)...
 6. Coroutines
 7. Kotlin script
 
-## Demo video:
-
-
 ## Demo videos:
 
 | Remarks  | Video                                                                                                |
@@ -42,4 +44,5 @@ And to go [MAD](https://madscorecard.withgoogle.com/scorecards/2138907411/)...
 | V1 - Single paged  | https://user-images.githubusercontent.com/6584143/134550521-890da7e3-20fb-4b3e-88e3-6d71ea44ace4.mp4 |
 | V2 - Multi tab + sections | https://user-images.githubusercontent.com/6584143/205542639-11d762ec-48ad-427a-8822-ac0dfbd5cdd8.mp4 |
 
-## [🤕What ate up my time|docs/nuances.md]
+
+### [🤕What ate up my time](docs/nuances.md)
