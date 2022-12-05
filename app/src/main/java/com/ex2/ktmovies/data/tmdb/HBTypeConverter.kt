@@ -10,7 +10,7 @@ import java.util.Calendar
 fun MovieDb.toMovieDetails(): MovieDetails = MovieDetails(
     id = this.id.toString(),
     title = title,
-    rating = userRating.toDouble(),
+    rating = voteAverage.toDouble(),
     summary = this.overview,
     releaseDate = parseDate(this.releaseDate),
     runTime = runtime,
@@ -23,7 +23,7 @@ fun MovieDb.toMovieDetails(): MovieDetails = MovieDetails(
 fun MovieDb.toMovieLite(): MovieLite = MovieLite(
     id = this.id.toString(),
     title = this.title,
-    rating = this.userRating.toDouble(),
+    rating = this.voteAverage.toDouble(),
     imageUrl = this.posterPath.inListingResolution()
 )
 

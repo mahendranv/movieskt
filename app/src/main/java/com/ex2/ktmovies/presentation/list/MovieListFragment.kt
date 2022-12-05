@@ -90,7 +90,7 @@ class MovieListFragment : Fragment() {
             enterTransition = MaterialElevationScale(true).apply {
                 duration = resources.getInteger(R.integer.motion_duration_large).toLong()
             }
-            val targetName = getString(R.string.transition_target_movie_details)
+            val targetName = getString(R.string.transition_target_movie_details) + movie.id
             val extras = FragmentNavigatorExtras(itemView to targetName)
             val direction =
                 MovieListFragmentDirections.actionMovieListFragmentToDetailsFragment(

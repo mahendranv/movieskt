@@ -3,6 +3,7 @@
     <!--  Transitions  -->
     <string name="transition_to_details">tx_to_movie_details %1$s</string>
     <string name="transition_target_movie_details">tx_target_movie_details</string>
+    <string name="new_entry">New</string>
 
     <string name="app_name">KtMovies</string>
     <string name="similar_movies">Similar movies</string>

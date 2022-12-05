@@ -64,7 +64,7 @@ class MovieDetailsFragment : Fragment() {
         viewModel.fetchMovieDetails(args.movieId)
 
         // Transition support
-        binding.root.transitionName = getString(R.string.transition_target_movie_details)
+        binding.root.transitionName = getString(R.string.transition_target_movie_details) + args.movieId
         binding.topPanel.coverImage.loadImage(args.posterUrl)
 
         binding.relatedRv.adapter = adapter

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.loadImage
+import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.databinding.LiHomeThumbBinding
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.platform.DisplayHelper
@@ -64,7 +65,10 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(
                     url = item.imageUrl,
                     cornerRadius = DisplayHelper.DP_8
                 )
-                ratingLabel.text = item.rating.toString()
+                ratingLabel.text = if (item.rating > 0.0) String.format(
+                    "%.1f",
+                    item.rating
+                ) else ratingLabel.context.getString(R.string.new_entry)
             }
         }
     }
