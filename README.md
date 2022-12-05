@@ -34,4 +34,12 @@ And to go [MAD](https://madscorecard.withgoogle.com/scorecards/2138907411/)...
 
 ## Demo video:
 
-https://user-images.githubusercontent.com/6584143/134550521-890da7e3-20fb-4b3e-88e3-6d71ea44ace4.mp4
+
+## Demo videos:
+
+| Remarks  | Video                                                                                                |
+|---|------------------------------------------------------------------------------------------------------|
+| V1 - Single paged  | https://user-images.githubusercontent.com/6584143/134550521-890da7e3-20fb-4b3e-88e3-6d71ea44ace4.mp4 |
+| V2 - Multi tab + sections | https://user-images.githubusercontent.com/6584143/205542639-11d762ec-48ad-427a-8822-ac0dfbd5cdd8.mp4 |
+
+## [🤕What ate up my time|docs/nuances.md]
