@@ -1,4 +1,4 @@
-name: Android CI
+name: Movies APK release
 
 permissions:
   contents: write
@@ -6,11 +6,11 @@ permissions:
 on:
   workflow_dispatch:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
     tags:
       - 'v**'
-#  pull_request:
-#    branches: [ "master" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -67,4 +67,4 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         name: Wallet-${{github.ref_name}}
-        files: ./app/build/outputs/apk/release/Wallet-${{github.ref_name}}.apk
+        files: ./app/build/outputs/apk/release/MoviesKt-${{github.ref_name}}.apk
