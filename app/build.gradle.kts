@@ -10,6 +10,9 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+val computedVersionName = findProperty("versionName") as String? ?: "v0.2"
+println("Computed version name: $computedVersionName")
+
 android {
     compileSdk = ConfigData.compileSdkVersion
 
@@ -19,7 +22,8 @@ android {
         targetSdk = ConfigData.targetSdkVersion
 
         versionCode = ConfigData.versionCode
-        versionName = ConfigData.versionName
+        versionName = computedVersionName
+        setProperty("archivesBaseName", "MoviesKt")
 
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner = "com.ex2.ktmovies.MovieAppTestRunner"

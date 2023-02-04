@@ -1,6 +1,6 @@
 object Versions {
     const val gradlePlugin = "7.3.0"
-    const val kotlin = "1.5.21"
+    const val kotlin = "1.6.10"
 
     const val navVersion = "2.5.3"
     const val lifecycleVersion = "2.5.1"

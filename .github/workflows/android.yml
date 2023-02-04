@@ -1,5 +1,8 @@
 name: Android CI
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
   push:
@@ -31,6 +34,35 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-      
+
     - name: Build with Gradle
       run: ./gradlew assembleDebug
+
+    - name: Release build
+      id: build_release
+      run: ./gradlew assembleRelease -PversionName='${{github.ref_name}}'
+
+    - uses: r0adkll/sign-android-release@v1
+      name: Sign app APK
+      id: sign_app
+      with:
+        releaseDirectory: app/build/outputs/apk/release
+        signingKeyBase64: ${{ secrets.MOVIES_KEYSTORE }}
+        alias: ${{ secrets.MOVIES_KEY_ALIAS }}
+        keyStorePassword: ${{ secrets.MOVIES_KEY_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+
+    - name: List release files
+      run: ls ./app/build/outputs/apk/release/
+
+    - name: Rename APK
+      id: rename_apk
+      run: mv ./app/build/outputs/apk/release/MoviesKt-release-unsigned-signed.apk ./app/build/outputs/apk/release/MoviesKt-${{github.ref_name}}.apk
+
+    - name: Create release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        name: Wallet-${{github.ref_name}}
+        files: ./app/build/outputs/apk/release/Wallet-${{github.ref_name}}.apk
