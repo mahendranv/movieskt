@@ -1,31 +1,38 @@
-name: Movies APK release
+name: Movies CD
 
 permissions:
   contents: write
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "main" ]
-    tags:
-      - 'v**'
-  pull_request:
-    branches: [ "main" ]
+    inputs:
+      version_name:
+        description: "Tag name for APK release"
+        required: true
+        default: 'v1.0'
+      tag_message:
+        description: "Release description"
+        required: false
+        default: 'Latest release'
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
+    - uses: rickstaa/action-create-tag@v1
+      with:
+        tag: ${{ inputs.version_name }}
+        message: ${{ inputs.tag_message }}
+
     - name: set up JDK 11
       uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
-    
+
     - name: Prepare local.properties
       id: prepare_local_props
       uses: timheuer/base64-to-file@v1.2
@@ -37,12 +44,9 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with Gradle
-      run: ./gradlew assembleDebug
-
     - name: Release build
       id: build_release
-      run: ./gradlew assembleRelease -PversionName='${{github.ref_name}}'
+      run: ./gradlew assembleRelease -PversionName='${{ inputs.version_name }}'
 
     - uses: r0adkll/sign-android-release@v1
       name: Sign app APK
@@ -59,12 +63,13 @@ jobs:
 
     - name: Rename APK
       id: rename_apk
-      run: mv ./app/build/outputs/apk/release/MoviesKt-release-unsigned-signed.apk ./app/build/outputs/apk/release/MoviesKt-${{github.ref_name}}.apk
+      run: mv ./app/build/outputs/apk/release/MoviesKt-release-unsigned-signed.apk ./app/build/outputs/apk/release/MoviesKt-${{ inputs.version_name }}.apk
 
     - name: Create release
       id: create_release
       uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
+#      if: startsWith(github.ref, 'refs/tags/')
       with:
-        name: Wallet-${{github.ref_name}}
-        files: ./app/build/outputs/apk/release/MoviesKt-${{github.ref_name}}.apk
+        tag_name: ${{ inputs.version_name }}
+        name: Wallet-${{ inputs.version_name }}
+        files: ./app/build/outputs/apk/release/MoviesKt-${{ inputs.version_name }}.apk
