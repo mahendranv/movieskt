@@ -41,5 +41,6 @@ jobs:
     - name: Archieve debug APK
       uses: actions/upload-artifact@v3
       with:
-        name: code-coverage-report
+        name: MoviesKt-debug.apk
         path: ./app/build/outputs/apk/debug/MoviesKt-debug.apk
+        retention-days: 5
