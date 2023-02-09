@@ -71,5 +71,5 @@ jobs:
 #      if: startsWith(github.ref, 'refs/tags/')
       with:
         tag_name: ${{ inputs.version_name }}
-        name: Wallet-${{ inputs.version_name }}
+        name: MoviesKt-${{ inputs.version_name }}
         files: ./app/build/outputs/apk/release/MoviesKt-${{ inputs.version_name }}.apk
