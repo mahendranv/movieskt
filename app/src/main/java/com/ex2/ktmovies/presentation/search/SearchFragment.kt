@@ -99,6 +99,7 @@ class SearchFragment : Fragment() {
                     }
                     is SearchViewModel.PageState.Error,
                     SearchViewModel.PageState.Loading -> Unit
+                    SearchViewModel.PageState.Initial -> Unit
                 }
             }
         }

@@ -1,8 +1,8 @@
 object BuildPlugins {
-    val android by lazy { "com.android.tools.build:gradle:${Versions.gradlePlugin}" }
-    val kotlin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}" }
-    val dagger by lazy { "com.google.dagger:hilt-android-gradle-plugin:2.38.1" }
-    val navigation by lazy { "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}" }
+    val android = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
+    val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    val dagger = "com.google.dagger:hilt-android-gradle-plugin:2.38.1"
+    val navigation = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}"
 }
 
 object Deps {
