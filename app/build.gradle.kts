@@ -103,6 +103,19 @@ dependencies {
     implementation(Deps.liveDataKtx)
     implementation(Deps.fragmentKtx)
 
+    // Compose
+    implementation(platform(Deps.compose_bom))
+    implementation(Deps.compose_material3)
+    implementation(Deps.compose_pager)
+    implementation(Deps.compose_preview)
+    implementation(Deps.compose_ui_tooling)
+    implementation(Deps.compose_nav)
+    implementation(Deps.compose_hilt_nav)
+    implementation(Deps.compose_activity)
+    implementation(Deps.compose_viewmodel)
+    implementation(Deps.compose_livedate)
+    implementation(Deps.compose_flow)
+
     // Http
     implementation(platform(Deps.okHttpBOM))
     implementation(Deps.okHttp)

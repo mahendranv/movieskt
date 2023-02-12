@@ -44,6 +44,29 @@ object Deps {
     val coil by lazy { "io.coil-kt:coil:${Versions.coil}" }
     val coilSvg by lazy { "io.coil-kt:coil-svg:${Versions.coil}" }
 
+    // Compose
+    val compose_bom = "androidx.compose:compose-bom:2022.12.00"
+//    implementation composeBom
+//    androidTestImplementation composeBom
+    // Material Design 3
+    val compose_material3 = "androidx.compose.material3:material3"
+    val compose_pager = "com.google.accompanist:accompanist-pager:0.28.0"
+    // Android Studio Preview support
+    val compose_preview = "androidx.compose.ui:ui-tooling-preview"
+    val compose_ui_tooling = "androidx.compose.ui:ui-tooling"
+
+    // Navigation
+    val compose_nav = "androidx.navigation:navigation-compose:2.5.3"
+    val compose_hilt_nav = "androidx.hilt:hilt-navigation-compose:1.0.0"
+
+    // Optional - Integration with activities
+    val compose_activity = "androidx.activity:activity-compose:1.6.1"
+    // Optional - Integration with ViewModels
+    val compose_viewmodel = "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+    // Optional - Integration with LiveData
+    val compose_livedate = "androidx.compose.runtime:runtime-livedata"
+    val compose_flow = "com.google.accompanist:accompanist-flowlayout:0.28.0"
+
     // Apollo
     val apolloRuntime by lazy { "com.apollographql.apollo:apollo-runtime:${Versions.apollo}" }
     val apolloCoroutines by lazy { "com.apollographql.apollo:apollo-coroutines-support:${Versions.apollo}" }
