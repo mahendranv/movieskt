@@ -5,7 +5,6 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
-    id("com.apollographql.apollo")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
 }
@@ -67,16 +66,6 @@ android {
     }
 }
 
-apollo {
-    generateKotlinModels.set(true)
-    customTypeMapping.set(
-        mapOf(
-            "URL" to "kotlin.String",
-            "Date" to "java.util.Calendar"
-        )
-    )
-}
-
 dependencies {
     // TMDB
     implementation(Deps.TMDB.holgerbrandl) {
@@ -122,11 +111,6 @@ dependencies {
     implementation(Deps.okHttpLoggingInterceptor)
     implementation(Deps.coil)
     implementation(Deps.coilSvg)
-
-    // Apollo
-    implementation(Deps.apolloRuntime)
-    implementation(Deps.apolloCoroutines)
-    implementation(Deps.apolloHttpCache)
 
     // Coroutines
     implementation(Deps.coroutinesCore)

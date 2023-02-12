@@ -1,6 +1,5 @@
 package com.ex2.ktmovies.di
 
-import com.ex2.ktmovies.data.remote.RemoteMovieSource
 import com.ex2.ktmovies.data.repo.MovieRepoImpl
 import com.ex2.ktmovies.data.source.MovieService
 import com.ex2.ktmovies.data.tmdb.TMDBServiceV1
@@ -14,10 +13,6 @@ import javax.inject.Named
 @Module
 @InstallIn(ViewModelComponent::class)
 abstract class MovieModule {
-
-    @Named("tmdb_v0")
-    @Binds
-    abstract fun bindMovieGraphQLService(movieSource: RemoteMovieSource): MovieService
 
     @Named("tmdb_v1")
     @Binds
