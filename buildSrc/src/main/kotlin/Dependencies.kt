@@ -1,7 +1,6 @@
 object BuildPlugins {
     val android by lazy { "com.android.tools.build:gradle:${Versions.gradlePlugin}" }
     val kotlin by lazy { "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}" }
-    val apollo by lazy { "com.apollographql.apollo:apollo-gradle-plugin:2.5.9" }
     val dagger by lazy { "com.google.dagger:hilt-android-gradle-plugin:2.38.1" }
     val navigation by lazy { "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}" }
 }
@@ -43,11 +42,6 @@ object Deps {
     val okHttpLoggingInterceptor by lazy { "com.squareup.okhttp3:logging-interceptor" }
     val coil by lazy { "io.coil-kt:coil:${Versions.coil}" }
     val coilSvg by lazy { "io.coil-kt:coil-svg:${Versions.coil}" }
-
-    // Apollo
-    val apolloRuntime by lazy { "com.apollographql.apollo:apollo-runtime:${Versions.apollo}" }
-    val apolloCoroutines by lazy { "com.apollographql.apollo:apollo-coroutines-support:${Versions.apollo}" }
-    val apolloHttpCache by lazy { "com.apollographql.apollo:apollo-http-cache:${Versions.apollo}" }
 
     // Coroutines
     val coroutinesCore by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}" }

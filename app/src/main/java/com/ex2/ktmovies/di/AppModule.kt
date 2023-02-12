@@ -3,9 +3,7 @@ package com.ex2.ktmovies.di
 import android.content.Context
 import coil.ImageLoader
 import coil.decode.SvgDecoder
-import com.apollographql.apollo.ApolloClient
 import com.ex2.ktmovies.BuildConfig
-import com.ex2.ktmovies.data.remote.MovieApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,11 +30,6 @@ annotation class MainDispatcher
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
-
-    @Provides
-    fun apolloClient(@CacheDirectory cacheDirectory: File): ApolloClient {
-        return MovieApiClient.createApolloClient(cacheDirectory)
-    }
 
     @CacheDirectory
     @Provides

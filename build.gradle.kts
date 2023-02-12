@@ -7,7 +7,6 @@ buildscript {
     dependencies {
         classpath(BuildPlugins.android)
         classpath(BuildPlugins.kotlin)
-        classpath(BuildPlugins.apollo)
 
         classpath(BuildPlugins.dagger)
         classpath(BuildPlugins.navigation)
