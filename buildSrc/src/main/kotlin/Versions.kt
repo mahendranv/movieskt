@@ -9,4 +9,7 @@ object Versions {
 
     const val tmdb_Api = "1.12"
     const val coil = "2.2.2"
+
+    const val compose_bom = "2022.12.00"
+    const val compose_compiler = "1.4.2"
 }

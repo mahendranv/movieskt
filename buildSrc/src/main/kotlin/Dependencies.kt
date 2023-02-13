@@ -44,7 +44,7 @@ object Deps {
     val coilSvg by lazy { "io.coil-kt:coil-svg:${Versions.coil}" }
 
     // Compose
-    val compose_bom = "androidx.compose:compose-bom:2022.12.00"
+    val compose_bom = "androidx.compose:compose-bom:${Versions.compose_bom}"
 //    implementation composeBom
 //    androidTestImplementation composeBom
     // Material Design 3
