@@ -26,10 +26,10 @@ jobs:
         tag: ${{ inputs.version_name }}
         message: ${{ inputs.tag_message }}
 
-    - name: set up JDK 11
+    - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'
         cache: gradle
 
