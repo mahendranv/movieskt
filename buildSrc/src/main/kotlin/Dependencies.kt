@@ -1,13 +1,13 @@
 object BuildPlugins {
-    val android = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
-    val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    val dagger = "com.google.dagger:hilt-android-gradle-plugin:2.45"
-    val navigation = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}"
+    const val android = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
+    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val dagger = "com.google.dagger:hilt-android-gradle-plugin:2.45"
+    const val navigation = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}"
 }
 
 object Deps {
 
-    val appCompat = "androidx.appcompat:appcompat:1.6.1"
+    const val appCompat = "androidx.appcompat:appcompat:1.6.1"
 
     // TMDB
     object TMDB {
