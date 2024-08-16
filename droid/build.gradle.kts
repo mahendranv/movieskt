@@ -35,6 +35,7 @@ dependencies {
     // Coil
     implementation(Deps.coil)
     implementation(Deps.coilSvg)
+    implementation(Deps.palette)
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")

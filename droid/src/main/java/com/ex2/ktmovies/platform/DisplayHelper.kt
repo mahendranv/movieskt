@@ -3,7 +3,6 @@ package com.ex2.ktmovies.platform
 import android.content.Context
 import android.content.res.Resources
 import android.util.TypedValue
-import android.view.View
 
 /**
  * Helper class for display

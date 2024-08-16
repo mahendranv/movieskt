@@ -6,7 +6,6 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.palette.graphics.Palette
 import coil.ImageLoader
 import coil.request.ImageRequest
-import coil.size.Scale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
