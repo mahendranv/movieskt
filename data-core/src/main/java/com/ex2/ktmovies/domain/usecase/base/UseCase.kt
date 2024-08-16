@@ -2,7 +2,11 @@ package com.ex2.ktmovies.domain.usecase.base
 
 import com.ex2.ktmovies.common.Either
 import com.ex2.ktmovies.common.Failure
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 abstract class UseCase<out Type, in Params> where Type : Any {
 
