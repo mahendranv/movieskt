@@ -1,10 +1,15 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("kotlin-parcelize")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
-    namespace = "com.ex2.droid"
+    namespace = "com.ex2.movies"
     compileSdk = ConfigData.compileSdkVersion
 
     defaultConfig {
@@ -21,7 +26,6 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(17)
@@ -30,11 +34,9 @@ android {
 }
 
 dependencies {
-
-    // Coil
-    implementation(Deps.coil)
-    implementation(Deps.coilSvg)
-    implementation(Deps.palette)
+    // DI
+    implementation(Deps.hilt)
+    kapt(Deps.hiltKapt)
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")

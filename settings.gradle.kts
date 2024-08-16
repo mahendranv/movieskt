@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "KtMovies"
 include(":app")
 include(":droid")
+include(":data-core")

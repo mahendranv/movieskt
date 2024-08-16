@@ -4,7 +4,7 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.ex2.ktmovies.R
+import com.ex2.droid.R
 
 /**
  * Wrapper extension to load image

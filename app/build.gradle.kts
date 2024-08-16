@@ -13,6 +13,7 @@ val computedVersionName = findProperty("versionName") as String? ?: "v0.2"
 println("Computed version name: $computedVersionName")
 
 android {
+    namespace = "com.ex2.ktmovies"
     compileSdk = ConfigData.compileSdkVersion
 
     defaultConfig {
@@ -46,9 +47,10 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
     }
 
     packagingOptions {
@@ -56,19 +58,12 @@ android {
             excludes += setOf("META-INF/DEPENDENCIES", "META-INF/NOTICE", "META-INF/LICENSE", "META-INF/LICENSE.txt", "META-INF/NOTICE.txt")
         }
     }
-
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
-    }
-
-    namespace = "com.ex2.ktmovies"
 }
 
 dependencies {
     // Modules
     implementation(project(":droid"))
+    implementation(project(":data-core"))
 
     // TMDB
     implementation(Deps.TMDB.holgerbrandl) {
