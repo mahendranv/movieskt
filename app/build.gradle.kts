@@ -67,6 +67,9 @@ android {
 }
 
 dependencies {
+    // Modules
+    implementation(project(":droid"))
+
     // TMDB
     implementation(Deps.TMDB.holgerbrandl) {
         exclude("commons-logging", "commons-logging")

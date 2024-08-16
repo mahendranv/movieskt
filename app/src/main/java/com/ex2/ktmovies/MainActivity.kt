@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
     private val destinationListener = { _: NavController, destination: NavDestination, _: Bundle? ->
         val mainRoute = destination.id in arrayOf(
-            R.id.homeFragment,
-            R.id.profileFragment,
-            R.id.searchFragment
+            com.ex2.ktmovies.R.id.homeFragment,
+            com.ex2.ktmovies.R.id.profileFragment,
+            com.ex2.ktmovies.R.id.searchFragment
         )
         binding.mainNavBar.showIf(mainRoute)
     }
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         // 2. For setupWithNavController to work, both the menu xml and navigation xml should
         // carry the same id-s. i.e homeFragment vs homeFragment
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+            supportFragmentManager.findFragmentById(com.ex2.ktmovies.R.id.container) as NavHostFragment
         navController = navHostFragment.navController
         binding.mainNavBar.setupWithNavController(navController!!)
 

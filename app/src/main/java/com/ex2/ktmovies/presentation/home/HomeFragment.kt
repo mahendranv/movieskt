@@ -38,10 +38,10 @@ class HomeFragment : Fragment() {
             val filter = homeTabs[position]
             val filterType = filter.listType
             tab.text = when (filterType) {
-                MovieListType.NOW_PLAYING -> getString(R.string.type_now_playing)
-                MovieListType.TRENDING -> getString(R.string.type_trending)
-                MovieListType.TOP_RATED -> getString(R.string.type_top_rated)
-                null -> getString(R.string.type_top_rated)
+                MovieListType.NOW_PLAYING -> getString(com.ex2.ktmovies.R.string.type_now_playing)
+                MovieListType.TRENDING -> getString(com.ex2.ktmovies.R.string.type_trending)
+                MovieListType.TOP_RATED -> getString(com.ex2.ktmovies.R.string.type_top_rated)
+                null -> getString(com.ex2.ktmovies.R.string.type_top_rated)
             }
         }.attach()
     }

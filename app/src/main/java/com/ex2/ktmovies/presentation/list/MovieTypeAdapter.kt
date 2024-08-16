@@ -13,9 +13,9 @@ data class MovieSection(
 )
 
 val sections = listOf(
-    MovieSection(stringId = R.string.type_now_playing, MovieListType.NOW_PLAYING),
-    MovieSection(stringId = R.string.type_top_rated, MovieListType.TOP_RATED),
-    MovieSection(stringId = R.string.type_trending, MovieListType.TRENDING)
+    MovieSection(stringId = com.ex2.ktmovies.R.string.type_now_playing, MovieListType.NOW_PLAYING),
+    MovieSection(stringId = com.ex2.ktmovies.R.string.type_top_rated, MovieListType.TOP_RATED),
+    MovieSection(stringId = com.ex2.ktmovies.R.string.type_trending, MovieListType.TRENDING)
 )
 
 class MovieTypeAdapter(context: Context) :

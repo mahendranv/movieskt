@@ -61,7 +61,7 @@ class MovieSearchResultAdapter : RecyclerView.Adapter<MovieSearchResultAdapter.M
 
             with(binding) {
                 // Unique transition name for each line item
-                movieThumb.transitionName = root.context.getString(R.string.transition_to_details, item.id)
+                movieThumb.transitionName = root.context.getString(com.ex2.ktmovies.R.string.transition_to_details, item.id)
 
                 titleLabel.text = item.title
                 movieThumb.loadImage(item.imageUrl)

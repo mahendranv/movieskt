@@ -59,7 +59,7 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(
                 // Unique transition name for each time to support exit transition from
                 // Movie details screen
                 root.transitionName =
-                    root.context.getString(R.string.transition_to_details, item.id)
+                    root.context.getString(com.ex2.ktmovies.R.string.transition_to_details, item.id)
                 titleLabel.text = item.title
                 movieThumb.loadImage(
                     url = item.imageUrl,
@@ -68,7 +68,7 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(
                 ratingLabel.text = if (item.rating > 0.0) String.format(
                     "%.1f",
                     item.rating
-                ) else ratingLabel.context.getString(R.string.new_entry)
+                ) else ratingLabel.context.getString(com.ex2.ktmovies.R.string.new_entry)
             }
         }
     }

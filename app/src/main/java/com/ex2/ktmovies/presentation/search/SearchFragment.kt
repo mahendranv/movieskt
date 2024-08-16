@@ -72,13 +72,13 @@ class SearchFragment : Fragment() {
         binding.searchRv.adapter = adapter
         adapter.setOnItemClickListener { binding, item ->
             exitTransition = MaterialElevationScale(false).apply {
-                duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+                duration = resources.getInteger(com.ex2.ktmovies.R.integer.motion_duration_large).toLong()
             }
             enterTransition = MaterialElevationScale(true).apply {
-                duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+                duration = resources.getInteger(com.ex2.ktmovies.R.integer.motion_duration_large).toLong()
             }
 
-            val targetName = getString(R.string.transition_target_movie_details)
+            val targetName = getString(com.ex2.ktmovies.R.string.transition_target_movie_details)
             val extras = FragmentNavigatorExtras(binding.movieThumb to targetName)
             val direction =
                 SearchFragmentDirections.actionSearchFragmentToDetailsFragment(item.id, item.imageUrl)

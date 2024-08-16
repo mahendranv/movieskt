@@ -43,10 +43,10 @@ class MovieDetailsFragment : Fragment() {
 
         // Transition
         sharedElementEnterTransition = MaterialContainerTransform().apply {
-            drawingViewId = R.id.container
-            duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+            drawingViewId = com.ex2.ktmovies.R.id.container
+            duration = resources.getInteger(com.ex2.ktmovies.R.integer.motion_duration_large).toLong()
             scrimColor = Color.TRANSPARENT
-            setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+            setAllContainerColors(requireContext().themeColor(com.google.android.material.R.attr.colorSurface))
         }
     }
 
@@ -64,7 +64,7 @@ class MovieDetailsFragment : Fragment() {
         viewModel.fetchMovieDetails(args.movieId)
 
         // Transition support
-        binding.root.transitionName = getString(R.string.transition_target_movie_details) + args.movieId
+        binding.root.transitionName = getString(com.ex2.ktmovies.R.string.transition_target_movie_details) + args.movieId
         binding.topPanel.coverImage.loadImage(args.posterUrl)
 
         binding.relatedRv.adapter = adapter

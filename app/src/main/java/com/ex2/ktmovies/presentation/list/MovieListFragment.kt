@@ -85,12 +85,12 @@ class MovieListFragment : Fragment() {
         binding.homeRv.adapter = adapter
         adapter.setOnItemClickListener { itemView, movie ->
             exitTransition = MaterialElevationScale(false).apply {
-                duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+                duration = resources.getInteger(com.ex2.ktmovies.R.integer.motion_duration_large).toLong()
             }
             enterTransition = MaterialElevationScale(true).apply {
-                duration = resources.getInteger(R.integer.motion_duration_large).toLong()
+                duration = resources.getInteger(com.ex2.ktmovies.R.integer.motion_duration_large).toLong()
             }
-            val targetName = getString(R.string.transition_target_movie_details) + movie.id
+            val targetName = getString(com.ex2.ktmovies.R.string.transition_target_movie_details) + movie.id
             val extras = FragmentNavigatorExtras(itemView to targetName)
             val direction =
                 MovieListFragmentDirections.actionMovieListFragmentToDetailsFragment(
