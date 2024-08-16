@@ -3,7 +3,6 @@ package com.ex2.ktmovies.presentation.list
 import android.content.Context
 import android.widget.ArrayAdapter
 import androidx.annotation.StringRes
-import com.ex2.ktmovies.R
 import com.ex2.ktmovies.domain.model.MovieListType
 
 data class MovieSection(

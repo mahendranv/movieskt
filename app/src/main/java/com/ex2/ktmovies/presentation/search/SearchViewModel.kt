@@ -2,7 +2,6 @@ package com.ex2.ktmovies.presentation.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.domain.model.MovieResult
 import com.ex2.ktmovies.domain.usecase.SearchMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

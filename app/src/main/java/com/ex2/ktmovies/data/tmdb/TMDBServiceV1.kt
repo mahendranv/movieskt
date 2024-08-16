@@ -9,7 +9,6 @@ import com.ex2.ktmovies.domain.model.MovieListType
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.domain.model.MovieResult
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

@@ -5,10 +5,9 @@ import com.ex2.ktmovies.domain.model.MovieResult
 import java.util.*
 
 fun MovieDetails.prepareMeta(): String {
-
     val list = mutableListOf<Any>()
-    if (releaseDate != null) {
-        list.add(releaseDate.get(Calendar.YEAR))
+    releaseDate?.let { date ->
+        list.add(date.get(Calendar.YEAR))
     }
     list.add(genre)
 
@@ -29,8 +28,8 @@ fun MovieDetails.prepareMeta(): String {
 
 fun MovieResult.prepareMeta(): String {
     val list = mutableListOf<Any>()
-    if (releaseDate != null) {
-        list.add(releaseDate.get(Calendar.YEAR))
+    releaseDate?.let { date ->
+        list.add(date.get(Calendar.YEAR))
     }
     list.add(genres)
 

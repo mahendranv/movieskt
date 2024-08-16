@@ -6,7 +6,6 @@ import com.ex2.ktmovies.domain.model.MovieListType
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.domain.repo.MovieRepo
 import com.ex2.ktmovies.domain.usecase.base.UseCase
-import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 

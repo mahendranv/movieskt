@@ -1,6 +1,6 @@
 package com.ex2.ktmovies.domain.model
 
-import java.util.*
+import java.util.Calendar
 
 data class MovieDetails(
     val id: String,

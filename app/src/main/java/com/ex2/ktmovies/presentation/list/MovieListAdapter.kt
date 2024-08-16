@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.loadImage
-import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.databinding.LiHomeThumbBinding
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.platform.DisplayHelper

@@ -1,13 +1,9 @@
 package com.ex2.ktmovies.presentation.details
 
 import com.ex2.ktmovies.domain.model.MovieResult
-import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 
 import com.google.common.truth.Truth.assertThat
-import org.hamcrest.CoreMatchers.`is`
 
 class UtilsKtTest {
 

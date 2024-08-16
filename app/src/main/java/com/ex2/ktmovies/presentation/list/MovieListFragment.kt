@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.databinding.FragmentMovieListBinding
 import com.ex2.ktmovies.domain.model.MovieFilter

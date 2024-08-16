@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.ex2.ktmovies.R
 import com.ex2.ktmovies.databinding.FragmentHomeBinding
 import com.ex2.ktmovies.domain.model.MovieListType
 import com.google.android.material.tabs.TabLayoutMediator
