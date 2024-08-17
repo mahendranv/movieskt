@@ -1,4 +1,4 @@
-package com.ex2.ktmovies.domain.usecase
+package com.ex2.ktmovies.usecase
 
 import com.ex2.ktmovies.common.Either
 import com.ex2.ktmovies.common.Failure

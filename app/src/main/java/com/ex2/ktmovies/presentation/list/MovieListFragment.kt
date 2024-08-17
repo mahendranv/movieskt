@@ -16,6 +16,7 @@ import com.ex2.ktmovies.databinding.FragmentMovieListBinding
 import com.ex2.ktmovies.domain.model.MovieFilter
 import com.ex2.ktmovies.platform.DisplayHelper
 import com.ex2.ktmovies.platform.GridSpacingItemDecoration
+import com.ex2.ktmovies.viewmodels.MovieListViewModel
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*

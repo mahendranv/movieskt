@@ -19,6 +19,7 @@ import com.ex2.ktmovies.common.extensions.themeColor
 import com.ex2.ktmovies.databinding.FragmentMovieDetailsBinding
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.platform.pickPalette
+import com.ex2.ktmovies.viewmodels.MovieDetailsViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint

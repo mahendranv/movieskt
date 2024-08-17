@@ -1,9 +1,4 @@
-package com.ex2.ktmovies.presentation.details
-
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import com.ex2.ktmovies.domain.usecase.GetMovieDetailsUseCase
-import javax.inject.Inject
+package com.ex2.ktmovies.viewmodels
 
 //class MovieDetailsViewModel @Inject constructor(
 //    private val getMovieDetailsUseCase: GetMovieDetailsUseCase,

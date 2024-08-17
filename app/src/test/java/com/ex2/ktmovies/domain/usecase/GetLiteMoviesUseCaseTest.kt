@@ -4,6 +4,7 @@ import com.ex2.ktmovies.common.Either
 import com.ex2.ktmovies.common.Failure
 import com.ex2.ktmovies.domain.repo.FakeMovieRepo
 import com.ex2.ktmovies.testdata.FakeMovieData
+import com.ex2.ktmovies.usecase.GetMovieDetailsUseCase
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

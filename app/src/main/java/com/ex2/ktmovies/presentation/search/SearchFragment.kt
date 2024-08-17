@@ -6,23 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.doOnPreDraw
-import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ex2.ktmovies.R
 import com.ex2.ktmovies.common.extensions.hideKeyboard
 import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.common.extensions.showKeyboard
 import com.ex2.ktmovies.common.extensions.trimmedText
 import com.ex2.ktmovies.databinding.FragmentSearchBinding
-import com.ex2.ktmovies.platform.DisplayHelper
+import com.ex2.ktmovies.viewmodels.SearchViewModel
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {

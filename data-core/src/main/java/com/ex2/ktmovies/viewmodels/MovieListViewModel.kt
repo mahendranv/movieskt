@@ -1,11 +1,11 @@
-package com.ex2.ktmovies.presentation.list
+package com.ex2.ktmovies.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ex2.ktmovies.domain.model.MovieFilter
 import com.ex2.ktmovies.domain.model.MovieListType
 import com.ex2.ktmovies.domain.model.MovieLite
-import com.ex2.ktmovies.domain.usecase.GetLiteMoviesUseCase
+import com.ex2.ktmovies.usecase.GetLiteMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
