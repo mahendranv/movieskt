@@ -1,0 +1,28 @@
+@startuml
+
+!theme sunlust
+<style>
+root { Margin 50 }
+</style>
+
+package "App" {
+  DI -> [Compose UI \n/ Fragments]
+  [Nav Graphs]
+  [Application]
+}
+
+package "Data Core" {
+  [TMBD\nFacade] .up.> [Service]
+  [Service] -right-* [Repo]
+  [Repo] -right-> [Usecase]
+  [ThreadPool] -up-> [Usecase]
+  note right of [Usecase]: Handles switching\nThread between\nMain vs Worker
+  [Usecase] -up-* [ViewModel]: Consumes
+  [ViewModel] -up-> DI
+}
+
+package "Android" {
+  [Image Loaders] -down-> DI
+  [View Extensions] -down-> DI
+}
+@enduml

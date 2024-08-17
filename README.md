@@ -13,7 +13,15 @@ And to go [MAD](https://madscorecard.withgoogle.com/scorecards/2138907411/)...
 |-|-|-|
 
 
+## Architecture
+Overall, the app is built using three modules. Each addresses different business requirement.
+1. Android : Platform helpers / extensions to access the system resources placed here.
+2. Data-Core: Data classes, service / repo abstractions and respective DI placed here. ViewModel is used as a port to expose APIs to UI layer.
+3. UI / App layer: Screens, nav graphs are placed here. App layer consumes the above two modules drives the user front. This layer can choose to use different UI frameworks as long as viewmodel pub-sub pattern is supported in screen component.
 
+All the above modules are bind using Hilt and resources are scoped to Singleton, ViewModel level.
+
+![img.png](docs/diagrams/module.png)
 
 ## Features
 1. Now playing list
