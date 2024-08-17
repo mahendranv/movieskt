@@ -8,8 +8,8 @@ import com.ex2.ktmovies.common.extensions.loadImage
 import com.ex2.ktmovies.common.extensions.showIf
 import com.ex2.ktmovies.databinding.ItemMovieSearchResultBinding
 import com.ex2.ktmovies.domain.model.MovieResult
-import com.ex2.ktmovies.presentation.details.prepareMeta
-import com.ex2.ktmovies.presentation.details.ratingText
+import com.ex2.ktmovies.prepareMeta
+import com.ex2.ktmovies.ratingText
 
 typealias MovieLiteClickListener = (ItemMovieSearchResultBinding, MovieResult) -> Unit
 

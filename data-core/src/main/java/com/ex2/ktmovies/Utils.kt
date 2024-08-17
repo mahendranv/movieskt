@@ -1,4 +1,4 @@
-package com.ex2.ktmovies.presentation.details
+package com.ex2.ktmovies
 
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieResult
