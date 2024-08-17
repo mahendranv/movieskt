@@ -38,6 +38,11 @@ dependencies {
     implementation(Deps.hilt)
     kapt(Deps.hiltKapt)
 
+    // TMDB
+    implementation(Deps.TMDB.holgerbrandl) {
+        exclude("commons-logging", "commons-logging")
+    }
+
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")

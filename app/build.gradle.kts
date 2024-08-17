@@ -65,11 +65,6 @@ dependencies {
     implementation(project(":droid"))
     implementation(project(":data-core"))
 
-    // TMDB
-    implementation(Deps.TMDB.holgerbrandl) {
-        exclude("commons-logging", "commons-logging")
-    }
-
     // Navigation
     implementation(Deps.Navigation.fragment)
     implementation(Deps.Navigation.ui)
