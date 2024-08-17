@@ -1,6 +1,10 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.library")
+    id("kotlin-kapt")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -35,6 +39,10 @@ dependencies {
     implementation(Deps.coil)
     implementation(Deps.coilSvg)
     implementation(Deps.palette)
+
+    // DI
+    implementation(Deps.hilt)
+    kapt(Deps.hiltKapt)
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")

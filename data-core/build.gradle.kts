@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+import java.util.Properties
 
 plugins {
     id("com.android.library")
@@ -18,6 +19,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        val props = Properties()
+        props.load(project.rootProject.file("local.properties").inputStream())
+        buildConfigField("String", "TMDB_API_KEY", props["tmdb_api_key"] as String)
     }
 
     buildTypes {
