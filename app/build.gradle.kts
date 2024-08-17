@@ -49,7 +49,13 @@ android {
 
     packagingOptions {
         resources {
-            excludes += setOf("META-INF/DEPENDENCIES", "META-INF/NOTICE", "META-INF/LICENSE", "META-INF/LICENSE.txt", "META-INF/NOTICE.txt")
+            excludes += setOf(
+                "META-INF/DEPENDENCIES",
+                "META-INF/NOTICE",
+                "META-INF/LICENSE",
+                "META-INF/LICENSE.txt",
+                "META-INF/NOTICE.txt"
+            )
         }
     }
 }
@@ -78,13 +84,6 @@ dependencies {
     implementation(Deps.viewModelKtx)
     implementation(Deps.liveDataKtx)
     implementation(Deps.fragmentKtx)
-
-    // Http
-    implementation(platform(Deps.okHttpBOM))
-    implementation(Deps.okHttp)
-    implementation(Deps.okHttpLoggingInterceptor)
-    implementation(Deps.coil)
-    implementation(Deps.coilSvg)
 
     // Coroutines
     implementation(Deps.coroutinesCore)

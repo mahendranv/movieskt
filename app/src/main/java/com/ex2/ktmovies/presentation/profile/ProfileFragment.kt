@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import coil.ImageLoader
-import coil.request.ImageRequest
+import com.ex2.ktmovies.common.extensions.loadSvg
 import com.ex2.ktmovies.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
+private const val TMDB_ICON = "file:///android_asset/img/tmdb.svg"
 
 /**
  * Profile/About fragment
@@ -18,8 +19,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
-    @Inject
-    lateinit var imageLoader: ImageLoader
+//    @Inject
+//    lateinit var imageLoader: ImageLoader
 
     private lateinit var binding: FragmentProfileBinding
 
@@ -33,12 +34,6 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        imageLoader.enqueue(
-            ImageRequest.Builder(requireContext())
-                .data(Uri.parse("file:///android_asset/img/tmdb.svg"))
-                .target(binding.tmdbIcon)
-                .build()
-        )
+        binding.tmdbIcon.loadSvg(TMDB_ICON)
     }
 }
