@@ -66,37 +66,37 @@ dependencies {
     implementation(project(":data-core"))
 
     // Navigation
-    implementation(Deps.Navigation.fragment)
-    implementation(Deps.Navigation.ui)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
     // UI
-    implementation(Deps.material)
-    implementation(Deps.constraintLayout)
-    implementation(Deps.palette)
+    implementation(libs.material)
+    implementation(libs.constraintLayout)
+    implementation(libs.palette)
 
     // DI
-    implementation(Deps.hilt)
-    kapt(Deps.hiltKapt)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
 
     // AndroidX
-    implementation(Deps.coreKtx)
-    implementation(Deps.appCompat)
-    implementation(Deps.viewModelKtx)
-    implementation(Deps.liveDataKtx)
-    implementation(Deps.fragmentKtx)
+    implementation(libs.coreKtx)
+    implementation(libs.appcompat)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.lifecycle.livedata)
+    implementation(libs.fragment.ktx)
 
     // Coroutines
-    implementation(Deps.coroutinesCore)
-    runtimeOnly(Deps.coroutinesAndroid)
+    implementation(libs.coroutines.core)
+    runtimeOnly(libs.coroutines.android)
 
     // Test
-    testImplementation(Deps.junit)
-    androidTestImplementation(Deps.junitAndroid)
-    androidTestImplementation(Deps.espresso)
-    androidTestImplementation(Deps.navigationTest)
-    testImplementation(Deps.truth)
-    testImplementation(Deps.coroutineTest)
-    androidTestImplementation(Deps.hiltAndroidTesting)
-    kaptAndroidTest(Deps.hiltTestAndroidCompiler)
-    androidTestImplementation(Deps.androidTestRunner)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.extJunit)
+    androidTestImplementation(libs.espressoCore)
+    androidTestImplementation(libs.navigation.testing)
+    testImplementation(libs.truth)
+    testImplementation(libs.coroutines.test)
+    androidTestImplementation(libs.hilt.testing)
+    kaptAndroidTest(libs.hilt.compiler)
+    androidTestImplementation(libs.test.runner)
 }
