@@ -25,10 +25,14 @@ android {
 
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner = "com.ex2.ktmovies.MovieAppTestRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildFeatures {
         viewBinding = true
+        compose = true
     }
 
     buildTypes {
@@ -41,12 +45,6 @@ android {
         }
     }
 
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(17)
-        }
-    }
-
     packagingOptions {
         resources {
             excludes += setOf(
@@ -56,6 +54,14 @@ android {
                 "META-INF/LICENSE.txt",
                 "META-INF/NOTICE.txt"
             )
+        }
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
         }
     }
 }
@@ -76,6 +82,17 @@ dependencies {
 
     // DI
     implementation(libs.hilt)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.activity.compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
     kapt(libs.hilt.compiler)
 
     // AndroidX
