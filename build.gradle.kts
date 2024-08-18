@@ -4,10 +4,8 @@ buildscript {
         google()
         mavenCentral()
     }
+    
     dependencies {
-        classpath(BuildPlugins.android)
-        classpath(BuildPlugins.kotlin)
-
         classpath(BuildPlugins.dagger)
         classpath(BuildPlugins.navigation)
     }
@@ -18,7 +16,7 @@ tasks.register("clean", Delete::class) {
 }
 
 plugins {
-    id("com.android.application") version "8.2.0" apply false
-    id("com.android.library") version "8.2.0" apply false
+    id("com.android.application") version "8.5.2" apply false
+    id("com.android.library") version "8.5.2" apply false
     id("org.jetbrains.kotlin.android") version "1.8.21" apply false
 }

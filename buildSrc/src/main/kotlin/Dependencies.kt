@@ -1,6 +1,4 @@
 object BuildPlugins {
-    const val android = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
-    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val dagger = "com.google.dagger:hilt-android-gradle-plugin:2.45"
     const val navigation = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navVersion}"
 }
