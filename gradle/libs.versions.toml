@@ -6,12 +6,12 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 material = "1.12.0"
 tmdbHolger = "1.15"
-navVersion = "2.5.3"
-lifecycleVersion = "2.5.1"
+navVersion = "2.7.7"
+lifecycleVersion = "2.8.4"
 hilt = "2.52"
-coroutines = "1.6.4"
+coroutines = "1.8.1"
 coil = "2.2.2"
-fragment = "1.5.5"
+fragment = "1.8.2"
 palette = "1.0.0"
 
 [libraries]
@@ -45,7 +45,7 @@ navigation-safeargs = { module = "androidx.navigation:navigation-safe-args-gradl
 
 navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navVersion"}
 truth = { module = "com.google.truth:truth", version = "1.1.3"}
-test-runner = { module = "androidx.test:runner", version = "1.4.0" }
+test-runner = { module = "androidx.test:runner", version = "1.6.2" }
 
 
 
