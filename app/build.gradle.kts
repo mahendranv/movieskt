@@ -75,6 +75,11 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
 
+    // Compose
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.constraintlayout.compose)
+    implementation(libs.hilt.navigation.compose)
+
     // UI
     implementation(libs.material)
     implementation(libs.constraintLayout)

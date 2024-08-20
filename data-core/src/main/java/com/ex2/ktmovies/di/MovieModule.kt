@@ -1,5 +1,6 @@
 package com.ex2.ktmovies.di
 
+import com.ex2.ktmovies.data.fake.FakeMovieService
 import com.ex2.ktmovies.data.repo.MovieRepoImpl
 import com.ex2.ktmovies.data.source.MovieService
 import com.ex2.ktmovies.data.tmdb.TMDBServiceV1
@@ -17,6 +18,10 @@ abstract class MovieModule {
     @Named("tmdb_v1")
     @Binds
     abstract fun bindTMDBServiceV1(service: TMDBServiceV1): MovieService
+
+    @Named("fake_v1")
+    @Binds
+    abstract fun bindFakeServiceV1(service: FakeMovieService): MovieService
 
     @Binds
     abstract fun bindMovieRepo(repo: MovieRepoImpl): MovieRepo

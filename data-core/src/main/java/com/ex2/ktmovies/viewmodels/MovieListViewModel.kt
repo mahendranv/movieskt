@@ -57,7 +57,7 @@ class MovieListViewModel @Inject constructor(
                     },
                     {
                         _movies.value = it
-                        _pageState.value = PageState.Loaded
+                        _pageState.value = PageState.Loaded(list = it)
                     }
                 )
             }
@@ -65,8 +65,10 @@ class MovieListViewModel @Inject constructor(
     }
 
     sealed class PageState {
-        object Loading : PageState()
-        object Loaded : PageState()
-        object Error : PageState()
+        data object Loading : PageState()
+        data class Loaded(
+            val list: List<MovieLite>
+        ) : PageState()
+        data object Error : PageState()
     }
 }
