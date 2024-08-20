@@ -121,4 +121,7 @@ dependencies {
     androidTestImplementation(libs.hilt.testing)
     kaptAndroidTest(libs.hilt.compiler)
     androidTestImplementation(libs.test.runner)
+
+    // Coil
+    implementation(libs.coil.compose)
 }

@@ -2,7 +2,6 @@ package com.ex2.ktmovies.ui.widgets
 
 import android.content.res.Configuration
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
@@ -21,7 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.ColorPainter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Devices
@@ -31,7 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.ex2.ktmovies.R
 import com.ex2.ktmovies.domain.model.MovieLite
+import com.ex2.ktmovies.ui.atoms.RemoteImage
 import com.ex2.ktmovies.ui.theme.KtMoviesTheme
+import java.util.Locale
 
 @Composable
 fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
@@ -45,9 +46,8 @@ fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
     ) {
         ConstraintLayout {
             val (image, rating, title) = createRefs()
-            Image(
-                painter = ColorPainter(color = MaterialTheme.colorScheme.surfaceDim),
-                contentDescription = "",
+            RemoteImage(
+                url = movie.imageUrl,
                 modifier = Modifier
                     .constrainAs(ref = image) {
                         bottom.linkTo(title.top, margin = 8.dp)
@@ -65,7 +65,7 @@ fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
                 style = MaterialTheme.typography.titleMedium
             )
 
-            TextWithIcon(text = movie.rating.toString(),
+            TextWithIcon(text = String.format(Locale.getDefault(), "%.1f", movie.rating),
                 iconResId = R.drawable.ic_rating_star,
                 style = MaterialTheme.typography.bodyMedium,
 //                color = MaterialTheme.colorScheme.onSurface,
