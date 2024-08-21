@@ -16,7 +16,7 @@ class FakeMovieService @Inject constructor() : MovieService {
     }
 
     override suspend fun fetchMovieDetails(id: String): Either<Failure, MovieDetails> {
-        TODO("Not yet implemented")
+        return Either.Right(FakeData.movieDetail)
     }
 
     override suspend fun searchMovie(term: String): Either<Failure, List<MovieResult>> {

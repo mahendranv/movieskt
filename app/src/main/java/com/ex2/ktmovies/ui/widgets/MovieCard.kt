@@ -68,7 +68,6 @@ fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
             TextWithIcon(text = String.format(Locale.getDefault(), "%.1f", movie.rating),
                 iconResId = R.drawable.ic_rating_star,
                 style = MaterialTheme.typography.bodyMedium,
-//                color = MaterialTheme.colorScheme.onSurface,
                 tint = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier
                     .background(
@@ -101,9 +100,9 @@ private fun MovieCardPreview() {
 fun TextWithIcon(
     text: String,
     @DrawableRes iconResId: Int,
-    tint: Color = MaterialTheme.colorScheme.onSurface,
-    style: TextStyle,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
+    style: TextStyle = MaterialTheme.typography.bodyMedium,
+    tint: Color = MaterialTheme.colorScheme.onPrimaryContainer,
     iconSize: Dp = 18.dp
 ) {
     Row(

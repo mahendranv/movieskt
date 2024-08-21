@@ -48,7 +48,16 @@ fun MovieResult.prepareMeta(): String {
     return list.joinToString(" | ")
 }
 
+
+fun MovieDetails.ratingText(): String {
+    return doubleToRatingString(rating)
+}
+
 fun MovieResult.ratingText(): String {
+    return doubleToRatingString(rating, numberOfRatings)
+}
+
+fun doubleToRatingString(rating: Double, numberOfRatings: Int = 0): String {
     val list = mutableListOf<Any>()
     if (rating > 0) {
         list.add(String.format("%.1f", rating))

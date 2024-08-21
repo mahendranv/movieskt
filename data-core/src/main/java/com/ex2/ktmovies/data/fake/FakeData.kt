@@ -1,6 +1,8 @@
 package com.ex2.ktmovies.data.fake
 
+import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieLite
+import java.util.Calendar
 
 object FakeData {
 
@@ -245,5 +247,22 @@ object FakeData {
             rating = 4.582,
             imageUrl = "https://image.tmdb.org/t/p/w500/ar2h87jlTfMlrDZefR3VFz1SfgH.jpg"
         )
+    )
+
+    val movieDetail = MovieDetails(
+        id = "718821", // Mapped from JSON
+        title = "Twisters", // Mapped from JSON
+        rating = 7.1, // Mapped from JSON
+        summary = "As storm season intensifies, the paths of former storm chaser Kate Carter and reckless social-media superstar Tyler Owens collide when terrifying phenomena never seen before are unleashed. The pair and their competing teams find themselves squarely in the paths of multiple storm systems converging over central Oklahoma in the fight of their lives.", // Mapped from JSON
+        releaseDate = Calendar.getInstance().apply { set(2024, 6, 10) },
+        runTime = 120,
+        genre = "Action",
+        covers = listOf(
+            "https://image.tmdb.org/t/p/w500/58D6ZAvOKxlHjyX9S8qNKSBE9Y.jpg"
+        ),
+        images = listOf(
+            "https://image.tmdb.org/t/p/w500/pjnD08FlMAIXsfOLKQbvmO0f0MD.jpg"
+        ),
+        related = movieList.subList(3, 8)
     )
 }

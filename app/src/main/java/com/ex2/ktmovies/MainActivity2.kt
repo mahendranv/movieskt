@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.ex2.ktmovies.screens.HomeScreen
 import com.ex2.ktmovies.screens.MovieListUi
+import com.ex2.ktmovies.screens.details.DetailsScreen
 import com.ex2.ktmovies.ui.theme.KtMoviesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +25,8 @@ class MainActivity2 : ComponentActivity() {
         setContent {
             KtMoviesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen()
+//                    HomeScreen()
+                    DetailsScreen()
                 }
             }
         }
