@@ -1,5 +1,6 @@
 package com.ex2.ktmovies.screens.search
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Surface
@@ -20,12 +21,15 @@ private fun PreviewSearchListUi() {
 
 @Composable
 fun SearchListUi(
-    modifier: Modifier = Modifier, list: List<MovieResult>
+    modifier: Modifier = Modifier, list: List<MovieResult>,
+    onItemClicked: (String) -> Unit = {}
 ) {
     Surface(modifier = modifier) {
         LazyColumn {
             items(list, key = { it.id }) { result ->
-                SearchListItem(result = result)
+                SearchListItem(result = result, modifier = Modifier.clickable {
+                    onItemClicked(result.id)
+                })
             }
         }
     }

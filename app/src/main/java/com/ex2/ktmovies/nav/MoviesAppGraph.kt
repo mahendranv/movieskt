@@ -22,7 +22,7 @@ fun MoviesAppNavHost(modifier: Modifier = Modifier) {
         }
 
         composable<SearchDestination> {
-            SearchScreen()
+            SearchScreen(navController = controller)
         }
 
         composable<DetailsDestination> { stack ->

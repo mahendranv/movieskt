@@ -1,18 +1,21 @@
 package com.ex2.ktmovies.screens.search
 
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.ex2.ktmovies.nav.DetailsDestination
+import com.ex2.ktmovies.ui.atoms.FullScreenText
+import com.ex2.ktmovies.ui.atoms.LoadingProgress
 import com.ex2.ktmovies.viewmodels.SearchViewModel
 
 @Composable
 fun SearchScreen(
-    modifier: Modifier = Modifier,
-    viewModel: SearchViewModel = hiltViewModel()
+    navController: NavController, modifier: Modifier = Modifier, viewModel: SearchViewModel = hiltViewModel()
 ) {
     val pageState = viewModel.pageState.collectAsState()
 
@@ -20,21 +23,22 @@ fun SearchScreen(
         viewModel.search("")
     }
 
-    when (val state = pageState.value) {
-        is SearchViewModel.PageState.Error -> {
-            Text(text = state.message)
-        }
+    Scaffold { insets ->
+        when (val state = pageState.value) {
+            is SearchViewModel.PageState.Error -> {
+                FullScreenText(text = state.message)
+            }
 
-        SearchViewModel.PageState.Initial -> {
-            LinearProgressIndicator()
-        }
+            SearchViewModel.PageState.Initial, SearchViewModel.PageState.Loading -> {
+                LoadingProgress()
+            }
 
-        is SearchViewModel.PageState.Loaded -> {
-            SearchListUi(list = state.list)
-        }
-
-        SearchViewModel.PageState.Loading -> {
-            LinearProgressIndicator()
+            is SearchViewModel.PageState.Loaded -> {
+                SearchListUi(list = state.list, modifier = Modifier.padding(insets)) { id ->
+                    navController.navigate(DetailsDestination(id))
+                }
+            }
         }
     }
+
 }
