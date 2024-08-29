@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Devices
@@ -28,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.ex2.ktmovies.R
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.ui.atoms.RemoteImage
@@ -38,7 +38,6 @@ import java.util.Locale
 fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
     Surface(
         shape = RoundedCornerShape(12.dp),
-//        color = MaterialTheme.colorScheme.surfaceVariant,
         modifier = modifier
             .fillMaxWidth()
             .aspectRatio(0.6f)
@@ -51,6 +50,11 @@ fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
                 modifier = Modifier
                     .constrainAs(ref = image) {
                         bottom.linkTo(title.top, margin = 8.dp)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                        top.linkTo(parent.top)
+                        width = Dimension.fillToConstraints
+                        height = Dimension.fillToConstraints
                     }
             )
 

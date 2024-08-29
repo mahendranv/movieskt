@@ -76,20 +76,22 @@ fun DetailsScreenUi(
                     .padding(top = 16.dp)
             )
 
-            Text(
-                text = "Related",
-                modifier = Modifier.padding(start = 24.dp, top = 24.dp),
-                style = MaterialTheme.typography.headlineSmall
-            )
+            if (details.related.isNotEmpty()) {
+                Text(
+                    text = "Related",
+                    modifier = Modifier.padding(start = 24.dp, top = 24.dp),
+                    style = MaterialTheme.typography.headlineSmall
+                )
 
-            RelatedMoviesUi(
-                movies = details.related,
-                contentPadding = 24.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(500.dp)
-            ) { id ->
-                relatedMovieClicked(id)
+                RelatedMoviesUi(
+                    movies = details.related,
+                    contentPadding = 24.dp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(500.dp)
+                ) { id ->
+                    relatedMovieClicked(id)
+                }
             }
         }
     }

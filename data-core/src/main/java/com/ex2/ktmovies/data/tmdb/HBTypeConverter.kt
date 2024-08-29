@@ -7,6 +7,7 @@ import com.ex2.ktmovies.domain.model.MovieResult
 import info.movito.themoviedbapi.model.MovieDb
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import kotlin.contracts.ExperimentalContracts
 
 fun MovieDb.toMovieDetails(): MovieDetails = MovieDetails(
     id = this.id.toString(),
@@ -16,7 +17,7 @@ fun MovieDb.toMovieDetails(): MovieDetails = MovieDetails(
     releaseDate = parseDate(this.releaseDate),
     runTime = runtime,
     genre = genres.firstOrNull()?.name ?: "",
-    covers = listOf(this.backdropPath),
+    covers = listOf(this.backdropPath.inDetailsResolution() ?: ""),
     images = this.getImages().mapNotNull { it.filePath.inDetailsResolution() },
     related = this.similarMovies.map { it.toMovieLite() }
 )
@@ -57,6 +58,8 @@ private fun String?.inListingResolution(): String? {
     return if (this == null) null else "https://image.tmdb.org/t/p/w300$this"
 }
 
+@OptIn(ExperimentalContracts::class)
 private fun String?.inDetailsResolution(): String? {
+//    contract { returns("https://image.tmdb.org/t/p/w500$this" ) implies (this@inDetailsResolution != null) }
     return if (this == null) null else "https://image.tmdb.org/t/p/w500$this"
 }
