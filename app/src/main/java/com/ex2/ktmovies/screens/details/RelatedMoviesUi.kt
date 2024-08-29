@@ -1,5 +1,6 @@
 package com.ex2.ktmovies.screens.details
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -20,7 +21,8 @@ import com.ex2.ktmovies.ui.widgets.MovieCard2
 fun RelatedMoviesUi(
     modifier: Modifier = Modifier,
     contentPadding: Dp = 16.dp,
-    movies: List<MovieLite>
+    movies: List<MovieLite>,
+    onItemClicked: (String) -> Unit = {}
 ) {
     LazyHorizontalGrid(
         modifier = modifier,
@@ -30,7 +32,12 @@ fun RelatedMoviesUi(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(movies, key = { it.id }) { movie ->
-            MovieCard2(movie = movie)
+            MovieCard2(
+                movie = movie,
+                modifier = Modifier.clickable {
+                    onItemClicked(movie.id)
+                }
+            )
         }
     }
 }

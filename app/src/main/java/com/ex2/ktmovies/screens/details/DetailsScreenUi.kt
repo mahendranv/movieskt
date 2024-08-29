@@ -33,7 +33,8 @@ import com.ex2.ktmovies.ui.widgets.TextWithIcon
 
 @Composable
 fun DetailsScreenUi(
-    modifier: Modifier = Modifier, details: MovieDetails
+    modifier: Modifier = Modifier, details: MovieDetails,
+    relatedMovieClicked: (String) -> Unit = {}
 ) {
     Surface {
         Column(modifier = modifier.verticalScroll(rememberScrollState())) {
@@ -87,7 +88,9 @@ fun DetailsScreenUi(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
-            )
+            ) { id ->
+                relatedMovieClicked(id)
+            }
         }
     }
 }

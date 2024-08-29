@@ -5,6 +5,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.ex2.ktmovies.nav.DetailsDestination
 import com.ex2.ktmovies.ui.atoms.FullScreenText
 import com.ex2.ktmovies.ui.atoms.LoadingProgress
 import com.ex2.ktmovies.viewmodels.MovieDetailsViewModel
@@ -12,6 +14,7 @@ import com.ex2.ktmovies.viewmodels.MovieDetailsViewModel
 @Composable
 fun DetailsScreen(
     id: String,
+    navController: NavController,
     modifier: Modifier = Modifier,
     viewModel: MovieDetailsViewModel = hiltViewModel()
 ) {
@@ -19,7 +22,7 @@ fun DetailsScreen(
 
     // Fetch
     LaunchedEffect(key1 = Unit) {
-        viewModel.fetchMovieDetails("sf")
+        viewModel.fetchMovieDetails(id)
     }
 
     when (val data = pageState.value) {
@@ -32,7 +35,12 @@ fun DetailsScreen(
         }
 
         is MovieDetailsViewModel.PageState.Loaded -> {
-            DetailsScreenUi(details = data.details, modifier = modifier)
+            DetailsScreenUi(
+                details = data.details,
+                modifier = modifier,
+            ) { relatedMovieId ->
+                navController.navigate(DetailsDestination(relatedMovieId))
+            }
         }
     }
 

@@ -14,8 +14,7 @@ import com.ex2.ktmovies.screens.search.SearchScreen
 fun MoviesAppNavHost(modifier: Modifier = Modifier) {
     val controller = rememberNavController()
     NavHost(
-        navController = controller,
-        startDestination = HomeDestination
+        navController = controller, startDestination = HomeDestination
     ) {
         composable<HomeDestination> {
             HomeScreen(navController = controller)
@@ -27,7 +26,10 @@ fun MoviesAppNavHost(modifier: Modifier = Modifier) {
 
         composable<DetailsDestination> { stack ->
             val details = stack.toRoute<DetailsDestination>()
-            DetailsScreen(details.id)
+            DetailsScreen(
+                navController = controller,
+                id = details.id
+            )
         }
     }
 }
