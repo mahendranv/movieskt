@@ -17,6 +17,9 @@ tasks.register("clean", Delete::class) {
 plugins {
     id("com.android.application") version "8.5.2" apply false
     id("com.android.library") version "8.5.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.8.21" apply false
-    id("com.google.dagger.hilt.android") version "2.52" apply false
+
+    alias(libs.plugins.hilt) apply false
+    alias(libs.plugins.compose.compiler) apply false
+    alias(libs.plugins.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.jetbrains.kotlin.serialization) apply false
 }

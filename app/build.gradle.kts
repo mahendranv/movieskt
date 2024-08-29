@@ -1,9 +1,11 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
-    id("dagger.hilt.android.plugin")
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
+    alias(libs.plugins.compose.compiler)
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -56,9 +58,6 @@ android {
             )
         }
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(17)
@@ -74,6 +73,9 @@ dependencies {
     // Navigation
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+
 
     // Compose
     implementation(libs.lifecycle.viewmodel.compose)
