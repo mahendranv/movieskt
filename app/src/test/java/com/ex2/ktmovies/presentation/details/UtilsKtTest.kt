@@ -1,6 +1,7 @@
 package com.ex2.ktmovies.presentation.details
 
 import com.ex2.ktmovies.domain.model.MovieResult
+import com.ex2.ktmovies.ratingText
 import org.junit.Test
 
 import com.google.common.truth.Truth.assertThat
