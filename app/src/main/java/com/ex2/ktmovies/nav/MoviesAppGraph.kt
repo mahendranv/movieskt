@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.ex2.ktmovies.screens.HomeScreen
 import com.ex2.ktmovies.screens.details.DetailsScreen
 import com.ex2.ktmovies.screens.search.SearchScreen
@@ -17,15 +18,16 @@ fun MoviesAppNavHost(modifier: Modifier = Modifier) {
         startDestination = HomeDestination
     ) {
         composable<HomeDestination> {
-            HomeScreen()
+            HomeScreen(navController = controller)
         }
 
         composable<SearchDestination> {
             SearchScreen()
         }
 
-        composable<DetailsDestination> { navArgs ->
-            DetailsScreen()
+        composable<DetailsDestination> { stack ->
+            val details = stack.toRoute<DetailsDestination>()
+            DetailsScreen(details.id)
         }
     }
 }

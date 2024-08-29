@@ -11,7 +11,9 @@ import com.ex2.ktmovies.viewmodels.MovieDetailsViewModel
 
 @Composable
 fun DetailsScreen(
-    modifier: Modifier = Modifier, viewModel: MovieDetailsViewModel = hiltViewModel()
+    id: String,
+    modifier: Modifier = Modifier,
+    viewModel: MovieDetailsViewModel = hiltViewModel()
 ) {
     val pageState = viewModel.pageState.collectAsState()
 
