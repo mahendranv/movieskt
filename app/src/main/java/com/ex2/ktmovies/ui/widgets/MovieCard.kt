@@ -66,7 +66,7 @@ fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
                         bottom.linkTo(parent.bottom, margin = 8.dp)
                         start.linkTo(parent.start, margin = 12.dp)
                     },
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.bodyLarge
             )
 
             TextWithIcon(text = String.format(Locale.getDefault(), "%.1f", movie.rating),
