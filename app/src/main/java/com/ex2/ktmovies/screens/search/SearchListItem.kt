@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -58,7 +59,7 @@ fun SearchListItem(
         Text(text = result.title,
             minLines = 1,
             maxLines = 2,
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.W700),
             modifier = Modifier.constrainAs(title) {
                 top.linkTo(thumb.top)
                 end.linkTo(parent.end, margin = 16.dp)
