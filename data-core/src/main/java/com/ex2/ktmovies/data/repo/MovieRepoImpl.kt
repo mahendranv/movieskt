@@ -12,8 +12,8 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class MovieRepoImpl @Inject constructor(
-    @Named("fake_v1")
-//    @Named("tmdb_v1")
+//    @Named("fake_v1")
+    @Named("tmdb_v1")
     private val movieService: MovieService
 ) : MovieRepo {
 

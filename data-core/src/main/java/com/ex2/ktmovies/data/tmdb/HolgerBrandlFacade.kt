@@ -28,7 +28,7 @@ class HolgerBrandlFacade @Inject constructor(
     @WorkerThread
     fun fetchMovieDetails(movieId: String): MovieDetails? {
         return try {
-            val response = api.getMovie(movieId.toInt(), LANGUAGE, MovieMethod.images, MovieMethod.similar)
+            val response = api.getMovie(movieId.toInt(), LANGUAGE, MovieMethod.images, MovieMethod.similar, MovieMethod.credits)
             response.toMovieDetails()
         } catch (e: Exception) {
             Log.d(TAG, "fetchMovieDetails: ", e)

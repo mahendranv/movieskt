@@ -78,6 +78,7 @@ fun SearchListItem(
 
         Text(text = result.overview,
             minLines = 5,
+            maxLines = 5,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.labelSmall,
             modifier = Modifier.constrainAs(description) {

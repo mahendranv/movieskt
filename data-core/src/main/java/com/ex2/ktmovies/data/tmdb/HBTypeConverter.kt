@@ -1,13 +1,31 @@
 package com.ex2.ktmovies.data.tmdb
 
 import android.annotation.SuppressLint
+import com.ex2.ktmovies.domain.model.DCast
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.domain.model.MovieResult
 import info.movito.themoviedbapi.model.MovieDb
+import info.movito.themoviedbapi.model.people.PersonCast
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import kotlin.contracts.ExperimentalContracts
+
+fun PersonCast.toDCast(): DCast {
+    return DCast(
+        character = this.character,
+        name = this.name,
+        url = this.profilePath.inListingResolution(),
+        id = this.id.toString()
+    )
+}
+
+fun extractCast(movie: MovieDb): List<DCast> {
+    if (movie.credits == null || movie.credits.cast.isNullOrEmpty()) {
+        return emptyList()
+    }
+    return movie.credits.cast.map { it.toDCast() }
+}
 
 fun MovieDb.toMovieDetails(): MovieDetails = MovieDetails(
     id = this.id.toString(),
@@ -19,7 +37,8 @@ fun MovieDb.toMovieDetails(): MovieDetails = MovieDetails(
     genre = genres.firstOrNull()?.name ?: "",
     covers = listOf(this.backdropPath.inDetailsResolution() ?: ""),
     images = this.getImages().mapNotNull { it.filePath.inDetailsResolution() },
-    related = this.similarMovies.map { it.toMovieLite() }
+    related = this.similarMovies.map { it.toMovieLite() },
+    cast = extractCast(this)
 )
 
 fun MovieDb.toMovieLite(): MovieLite = MovieLite(

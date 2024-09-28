@@ -1,5 +1,6 @@
 package com.ex2.ktmovies.data.fake
 
+import com.ex2.ktmovies.domain.model.DCast
 import com.ex2.ktmovies.domain.model.MovieDetails
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.domain.model.MovieResult
@@ -250,10 +251,22 @@ object FakeData {
         )
     )
 
+    val castList = listOf(
+        DCast("Iron Man", "Robert Downey Jr.", "https://imdb.com/robertdowneyjr", "001"),
+        DCast("Captain America", "Chris Evans", "https://imdb.com/chrisevans", "002"),
+        DCast("Thor", "Chris Hemsworth", "https://imdb.com/chrishemsworth", "003"),
+        DCast("Black Widow", "Scarlett Johansson", "https://imdb.com/scarlettjohansson", "004"),
+        DCast("Hawkeye", "Jeremy Renner", "https://imdb.com/jeremyrenner", "005"),
+        DCast("Hulk", "Mark Ruffalo", "https://imdb.com/markruffalo", "006"),
+        DCast("Loki", "Tom Hiddleston", "https://imdb.com/tomhiddleston", "007"),
+        DCast("Nick Fury", "Samuel L. Jackson", "https://imdb.com/samuelljackson", "008"),
+        DCast("Spider-Man", "Tom Holland", "https://imdb.com/tomholland", "009"),
+    )
+
     val movieDetail = MovieDetails(
-        id = "718821", // Mapped from JSON
-        title = "Twisters", // Mapped from JSON
-        rating = 7.1, // Mapped from JSON
+        id = "718821",
+        title = "Twisters",
+        rating = 7.1,
         summary = "As storm season intensifies, the paths of former storm chaser Kate Carter and reckless social-media superstar Tyler Owens collide when terrifying phenomena never seen before are unleashed. The pair and their competing teams find themselves squarely in the paths of multiple storm systems converging over central Oklahoma in the fight of their lives.", // Mapped from JSON
         releaseDate = Calendar.getInstance().apply { set(2024, 6, 10) },
         runTime = 120,
@@ -264,7 +277,8 @@ object FakeData {
         images = listOf(
             "https://image.tmdb.org/t/p/w500/pjnD08FlMAIXsfOLKQbvmO0f0MD.jpg"
         ),
-        related = movieList.subList(3, 8)
+        related = movieList.subList(3, 8),
+        cast = castList
     )
 
     val searchResults = listOf(

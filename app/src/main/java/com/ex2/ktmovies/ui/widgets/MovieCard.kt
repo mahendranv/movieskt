@@ -19,18 +19,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.ex2.ktmovies.R
 import com.ex2.ktmovies.domain.model.MovieLite
 import com.ex2.ktmovies.ui.atoms.RemoteImage
+import com.ex2.ktmovies.ui.atoms.gradientBackground
 import com.ex2.ktmovies.ui.theme.KtMoviesTheme
 import java.util.Locale
 
@@ -38,10 +42,11 @@ import java.util.Locale
 fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
     Surface(
         shape = RoundedCornerShape(12.dp),
+        color = MaterialTheme.colorScheme.surfaceVariant,
         modifier = modifier
             .fillMaxWidth()
             .aspectRatio(0.6f)
-            .border(width = 0.5.dp, MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(12.dp))
+//            .border(width = 0.5.dp, MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(12.dp))
     ) {
         ConstraintLayout {
             val (image, rating, title) = createRefs()
@@ -49,7 +54,7 @@ fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
                 url = movie.imageUrl,
                 modifier = Modifier
                     .constrainAs(ref = image) {
-                        bottom.linkTo(title.top, margin = 8.dp)
+                        bottom.linkTo(title.top)
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                         top.linkTo(parent.top)
@@ -60,13 +65,16 @@ fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
 
             Text(
                 text = movie.title,
+                textAlign =  TextAlign.Start,
                 maxLines = 1,
                 modifier = Modifier
+                    .fillMaxWidth()
                     .constrainAs(title) {
+                        top.linkTo(image.bottom, margin = 6.dp)
                         bottom.linkTo(parent.bottom, margin = 8.dp)
-                        start.linkTo(parent.start, margin = 12.dp)
+                        start.linkTo(parent.start, margin = 4.dp)
                     },
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge.copy(fontSize = 12.sp)
             )
 
             TextWithIcon(text = String.format(Locale.getDefault(), "%.1f", movie.rating),
@@ -74,6 +82,7 @@ fun MovieCard2(modifier: Modifier = Modifier, movie: MovieLite) {
                 style = MaterialTheme.typography.bodyMedium,
                 tint = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier
+                    .alpha(0.6f)
                     .background(
                         color = MaterialTheme.colorScheme.primaryContainer,
                         shape = RoundedCornerShape(8.dp)

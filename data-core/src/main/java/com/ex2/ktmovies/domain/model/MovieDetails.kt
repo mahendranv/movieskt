@@ -15,5 +15,6 @@ data class MovieDetails(
     val covers: List<String>,
     val images: List<String>,
 
-    val related: List<MovieLite>
+    val related: List<MovieLite>,
+    val cast: List<DCast> = emptyList()
 )

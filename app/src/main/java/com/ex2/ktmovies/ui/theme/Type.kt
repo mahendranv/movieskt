@@ -9,7 +9,8 @@ import androidx.compose.ui.unit.sp
 import com.ex2.ktmovies.R
 
 val signika = FontFamily(
-    Font(R.font.signika, FontWeight.Normal)
+    Font(R.font.inter, FontWeight.Normal),
+    Font(R.font.signika, FontWeight.Bold ),
 )
 
 
@@ -19,6 +20,13 @@ val Typography = Typography(
         fontFamily = signika,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = signika,
+        fontWeight = FontWeight.Normal,
+        fontSize = 24.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     )
